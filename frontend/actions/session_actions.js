@@ -5,7 +5,7 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
 /* action creators  */
-const receiveCurrentUser = user => {
+export const receiveCurrentUser = user => {
 
   return (
     {
@@ -16,7 +16,7 @@ const receiveCurrentUser = user => {
 
 }
 
-const logoutCurrentUser = () => {
+export const logoutCurrentUser = () => {
 
   return (
     {
@@ -25,7 +25,7 @@ const logoutCurrentUser = () => {
   )
 }
 
-export const receiveErrors = errors => {
+export const receiveSessionErrors = errors => {
 
   return (
     {
@@ -38,10 +38,16 @@ export const receiveErrors = errors => {
 /* thunk action creators */
 
 export const signupUser = user => dispatch => SessionAPIUtil.signup(user)
-  .then(user => dispatch(receiveCurrentUser(user)))
+  .then(
+    user => dispatch(receiveCurrentUser(user)),
+    response => dispatch(receiveSessionErrors(response.responseJSON)) 
+  );
 
 export const loginUser = user => dispatch => SessionAPIUtil.login(user)
-  .then(user => dispatch(receiveCurrentUser(user)));
+  .then(
+    user => dispatch(receiveCurrentUser(user)),
+    response => dispatch(receiveSessionErrors(response.responseJSON))
+  );
 
 export const logoutUser = () => dispatch => SessionAPIUtil.logout(user)
   .then(() => dispatch(logoutCurrentUser()));

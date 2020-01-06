@@ -8,8 +8,9 @@ class User < ApplicationRecord
     before_validation :ensure_token
     attr_reader :password
 
-    def self.find_by_credentials(user, password)
-        user = User.find_by(username: user)
+    def self.find_by_credentials(login, password)
+        user = User.find_by(username: login) || User.find_by(email: login)
+      
         return nil unless user
         return user if user.is_password?(password)
     end
