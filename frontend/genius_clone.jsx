@@ -9,7 +9,22 @@ import { receiveCurrentUser, logoutCurrentUser, receiveSessionErrors } from './a
 document.addEventListener('DOMContentLoaded', () => {
 
   const rootEl = document.getElementById('root');
-  let store = configureStore();
+  let store 
+  
+  if (window.currentUser) {
+    const preloadedState = {
+      
+      entities: {
+        users: { [window.currentUser.id]: window.currentUser }
+      },
+      session: {
+        session: { currentUserId: window.currentUser.id }
+      }
+    }
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
 
   /* to remove after testing */
 
@@ -25,7 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* testing utils end */
 
+
+
   ReactDOM.render(<Root store={store}/>, rootEl);
 
 })
+
 
