@@ -49,5 +49,5 @@ export const loginUser = user => dispatch => SessionAPIUtil.login(user)
     response => dispatch(receiveSessionErrors(response.responseJSON))
   );
 
-export const logoutUser = () => dispatch => SessionAPIUtil.logout(user)
-  .then(() => dispatch(logoutCurrentUser()));
+export const logoutUser = (userId) => dispatch => SessionAPIUtil.logout(userId)
+  .then(() => dispatch(logoutCurrentUser(userId)));
