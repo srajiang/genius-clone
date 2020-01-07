@@ -4,8 +4,162 @@
 
 
 .nav-bar {
-  background: yellow;
+  background: #FFFF64;
+  height: 45px;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+
 }
 
+.left-nav {
+
+  color: #FFFF64;
+
+}
+
+.right-nav {
+
+  padding-right: 15px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+
+.app-logo {
+  width: 70%;
+}
+
+.session-form-overlay {
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 80%;
+
+}
+
+.session-form-wrapper {
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+}
+
+.session-form {
+
+  position: absolute;
+  
+  padding: 25px;
+  background-color: #E9E9E9E9;
+  width: 500px;
+  left: calc(50% - 250px);
+  top: 16px;
+  z-index: 3;
+  opacity: 100%;
+
+  text-align: center;
+
+}
+
+.session-form > h3{
+
+  text-align: left;
+  padding: 5px;
+  padding-left: 0px;
+  border-bottom: 2px solid #99a7ee;
+  color: #99a7ee;
+  font-size: 15px;
+  letter-spacing: .08em;
+
+}
+
+.session-form > form {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.session-form-input {
+
+  font-size: 15px;
+  padding: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  border: 2px solid lightgrey;
+}
+
+.session-form-input:focus {
+
+  outline:none;
+
+}
+
+.session-form-input:focus {
+
+  &::-webkit-input-placeholder {
+     color: lightgrey;
+  }
+
+}
+
+.session-form-nav {
+
+  color: #9A9A9A;
+  font-size: 15px;
+  width: fit-content;
+
+  padding-bottom: 3px;
+  border-bottom: 2px solid #9A9A9A;
+  transition: all .3s ease;
+
+}
+
+.session-form-nav:hover{
+
+  color: #99a7ee;
+  border-bottom: 2px solid #99a7ee;
+
+}
+
+.close-x {
+
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  color: #9A9A9A;
+  transition: all .3s ease;
+}
+
+.close-x:hover {
+
+  color: black;
+  
+}
+
+// [class*="sprite-"] {
+//   display: inline-block;
+//   background-image: url(".././images/sprites.png");
+//   // background-size: 1163.99px;
+//   background-repeat: no-repeat;
+//   vertical-align: bottom;
+//   overflow: hidden;
+//   // height: 0;
+//   // width: 25px;
+//   padding-top: 25px;
+// }
+
+// .sprite-header {
+
+//   // background-position: ;
+// }

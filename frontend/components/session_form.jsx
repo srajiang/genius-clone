@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
 
@@ -61,7 +62,8 @@ class SessionForm extends React.Component {
       return (
         <input
           type="text"
-          placeholder="Login or email address"
+          className="session-form-input"
+          placeholder="Username or email address"
           value={this.state.email_or_user}
           onChange={this.update('email_or_user')}
         />
@@ -70,15 +72,17 @@ class SessionForm extends React.Component {
 
     return (
 
-      <div>
+      <div className="test">
         <input 
           type="text"
+          className="session-form-input"
           value={this.state.email}
           placeholder="Email address"
           onChange={this.update('email')}
         />
         <input
           type="text"
+          className="session-form-input"
           placeholder="Username"
           value={this.state.username}
           onChange={this.update('username')}
@@ -86,27 +90,51 @@ class SessionForm extends React.Component {
       </div>
 
     )
+  }
 
+  submitText() {
+
+    return ( this.props.formType === "Sign In") ? "CREATE AN ACCOUNT" : "ALREADY HAVE AN ACCOUNT";
 
   }
+
 
   render() {
 
     return (
 
-      <form onSubmit={this.handleSubmit} action="">
+      <div>
+        <div className="session-form-overlay">
+        </div>
 
-        {this.renderEmailOrUserField()}
+        <div className="session-form-wrapper">
+          <div className="session-form">
+            <Link to="/" className="close-x" >&times;</Link>
+            <h3>{this.props.formType.toUpperCase()}</h3>
+            <form onSubmit={this.handleSubmit} action="">
 
-        <input
-          type="text"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.update('password')}
-        />
-        <input type="submit"/>
-        
-      </form>
+              {this.renderEmailOrUserField()}
+
+              <input
+                type="password"
+                className ="session-form-input"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.update('password')}
+              />
+              <input 
+                className="btn"
+                type="submit" 
+                value={this.props.formType}/>
+            
+            </form>
+            <Link to={`/${this.props.opposingPath}`}>
+              <p className="session-form-nav">{this.props.formSubmitText}</p>
+            </Link>
+            
+          </div>
+        </div>
+      </div>
 
     )
 

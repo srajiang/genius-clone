@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Root from './components/root';
-import * as SessionAPIUtil from './util/session_api_util'
 import configureStore from './store/store'
-import { receiveCurrentUser, logoutCurrentUser, receiveSessionErrors } from './actions/session_actions'
+
+/* to remove after testing */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   const rootEl = document.getElementById('root');
-  let store 
-  
+  let store = null; 
+
+  /* checks for current user and assigns preloaded state accordingly */
   if (window.currentUser) {
     const preloadedState = {
       
@@ -22,22 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     store = configureStore(preloadedState);
+    delete window.currentUser;
+
   } else {
     store = configureStore();
   }
 
   /* to remove after testing */
 
-  // window.login = SessionAPIUtil.login;
-  // window.logout = SessionAPIUtil.logout;
-  // window.signup = SessionAPIUtil.signup;
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch; 
   window.store = store;
-  // window.receiveCurrentUser = receiveCurrentUser;
-  // window.logoutCurrentUser = logoutCurrentUser;
-  // window.receiveSessionErrors = receiveSessionErrors;
-
+  
   /* testing utils end */
 
 
