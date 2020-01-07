@@ -67,6 +67,15 @@ body {
   padding: 5px;
   width: 75px;
   cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+.btn:hover {
+
+  color: white;
+  background-color: black;
+
 }
 
 

@@ -23,9 +23,14 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault;
-
-    /* handle the actual submission of the form */
-    this.props.action(this.state);
+    
+    /* remove the temporary piece of state to track email_or_user */
+    console.dir(user);
+    let user = this.state;
+    delete user.email_or_user;
+    console.dir(user);
+    
+    this.props.action(user);
 
   }
 
@@ -72,7 +77,7 @@ class SessionForm extends React.Component {
 
     return (
 
-      <div className="test">
+      <div className="session-form-input-email-address">
         <input 
           type="text"
           className="session-form-input"
@@ -104,13 +109,13 @@ class SessionForm extends React.Component {
     return (
 
       <div>
-        <div className="session-form-overlay">
-        </div>
+        <div className="session-form-overlay"></div>
 
         <div className="session-form-wrapper">
           <div className="session-form">
             <Link to="/" className="close-x" >&times;</Link>
             <h3>{this.props.formType.toUpperCase()}</h3>
+
             <form onSubmit={this.handleSubmit} action="">
 
               {this.renderEmailOrUserField()}
@@ -122,13 +127,13 @@ class SessionForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update('password')}
               />
-              <input 
-                className="btn"
-                type="submit" 
-                value={this.props.formType}/>
+              <button className="btn" type="submit" >
+                {this.props.formType}
+              </button>
             
             </form>
-            <Link to={`/${this.props.opposingPath}`}>
+            <Link 
+              to={`/${this.props.opposingPath}`}>
               <p className="session-form-nav">{this.props.formSubmitText}</p>
             </Link>
             
