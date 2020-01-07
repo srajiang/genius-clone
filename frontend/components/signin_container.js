@@ -4,7 +4,9 @@ import { loginUser } from '../actions/session_actions';
 
 const mSTP = () => ({
 
-  formType: "Sign In"
+  formType: "Sign In",
+  opposingPath: 'signup',
+  formSubmitText: 'CREATE AN ACCOUNT'
 
 })
 

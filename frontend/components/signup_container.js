@@ -4,11 +4,13 @@ import { signupUser } from '../actions/session_actions';
 
 const mSTP = () => ({
 
-  formType: "Sign Up"
+  formType: "Sign Up",
+  opposingPath: 'signin',
+  formSubmitText: 'ALREADY HAVE AN ACCOUNT'
 
 })
 
-const mDTP = (dispatch) => ({
+const mDTP = dispatch => ({
 
   action: (user) => dispatch(signupUser(user))
 

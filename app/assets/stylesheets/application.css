@@ -30,8 +30,12 @@ ol[class] {
   padding: 0;
   list-style: none;
 }
+/* 
+a:visited {
+  color: black;
+} */
 
-body, h1, h2, h3, h4, p, ul[class], li[class], dl, dd {
+body, h1, h2, h3, h4, p, ul[class], li[class], dl, dd, a {
 
   margin: 0;
   border: 0;
@@ -42,6 +46,8 @@ body, h1, h2, h3, h4, p, ul[class], li[class], dl, dd {
 
   background: transparent;
 
+  text-decoration: none;
+
 }
 
 /*  */
@@ -49,6 +55,18 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  /* line-height: 1.5; */
+  font-family: 'Public Sans', sans-serif;
+
 }
+
+/* Button styles */
+.btn {
+  border: 2px solid black;
+  background: transparent;
+  font-size: 15px;
+  padding: 5px;
+  width: 75px;
+  cursor: pointer;
+}
+
 
