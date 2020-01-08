@@ -27,7 +27,6 @@ class NavBar extends React.Component {
       )
     }
     return <Link to="/signin">SIGN IN</Link>
-
   }
 
   render() {

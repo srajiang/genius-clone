@@ -4,7 +4,6 @@ export const fetchSongs = () => (
 
     method: "GET",
     url: `api/songs`,
-
   })
 )
 
