@@ -25,10 +25,8 @@ class SessionForm extends React.Component {
     e.preventDefault;
     
     /* remove the temporary piece of state to track email_or_user */
-    console.dir(user);
     let user = this.state;
     delete user.email_or_user;
-    console.dir(user);
     
     this.props.action(user);
 
