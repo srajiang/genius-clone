@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component {
 
@@ -18,17 +18,19 @@ class SessionForm extends React.Component {
 
     this.matchEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.handleSubmit = this.handleSubmit.bind(this);    
-   
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+    this.demo = this.demo.bind(this);
+    this.demoEmail = this.demoEmail.bind(this);
+    this.demoPassword = this.demoPassword.bind(this);
+    
   }
 
   handleSubmit(e) {
     e.preventDefault;
     
     /* remove the temporary piece of state to track email_or_user */
-    console.dir(user);
     let user = this.state;
     delete user.email_or_user;
-    console.dir(user);
     
     this.props.action(user);
 
@@ -44,8 +46,10 @@ class SessionForm extends React.Component {
       if (updateField === 'email_or_user') { //if email or user
         
         if (this.matchEmail.test(updateVal) === true) {
+
           otherField = 'email';
           this.setState( { username: '' });
+
         }
 
         this.setState( { [updateField]: updateVal, [otherField]: updateVal });
@@ -103,6 +107,83 @@ class SessionForm extends React.Component {
 
   }
 
+  renderDemoAction() {
+
+    if(this.props.formType === "Sign In") {
+
+      return (
+        <div>
+          <p onClick={this.handleDemoSubmit} className="session-form-nav">{`DEMO SIGN IN`}</p>
+        </div>
+      )
+    } 
+  }
+
+  handleDemoSubmit() {
+
+    let demoUser = {
+      email: "therealbjork@bjork.com",
+      password: "itsohsoquiet"
+    }
+
+    this.demo(demoUser);
+
+  }
+
+  demo(user) {
+
+    const intervalSpeed = 50;
+    const { email, password } = user;
+
+    const demoEmailTime = email.length * intervalSpeed;
+    const demoPassTime = password.length * intervalSpeed;
+    const buffer = intervalSpeed * 7;
+    const totalDemoTime = demoEmailTime + demoPassTime + buffer;
+
+    setTimeout( () => this.demoEmail(email, intervalSpeed));
+    setTimeout( () => this.demoPassword(password, intervalSpeed), demoEmailTime);
+    setTimeout(() => this.props.action(user), totalDemoTime);
+    setTimeout(() => this.closeModal(), totalDemoTime + buffer);
+
+  }
+
+  demoEmail(email, intervalSpeed) {
+
+    let i = 0;
+
+    setInterval(() => {
+      if (i <= email.length) {
+        this.setState({ email: email.slice(0, i), email_or_user: email.slice(0, i)})
+        i++;
+      } else {
+        clearInterval();
+      }
+    }, intervalSpeed);
+
+  }
+
+  demoPassword(password, intervalSpeed) {
+    
+    let j = 0;
+
+    setInterval(() => {
+      if (j <= password.length) {
+        this.setState({password: password.slice(0, j)})
+        j++;
+      } else {
+        clearInterval();
+      }
+    }, intervalSpeed);
+
+  }
+
+  closeModal() {
+    console.log('closing');
+    <Redirect exact to="/"></Redirect>
+
+  }
+
+
 
   render() {
 
@@ -112,7 +193,9 @@ class SessionForm extends React.Component {
         <div className="session-form-overlay"></div>
 
         <div className="session-form-wrapper">
+          
           <div className="session-form">
+            
             <Link to="/" className="close-x" >&times;</Link>
             <h3>{this.props.formType.toUpperCase()}</h3>
 
@@ -132,10 +215,16 @@ class SessionForm extends React.Component {
               </button>
             
             </form>
-            <Link 
-              to={`/${this.props.opposingPath}`}>
-              <p className="session-form-nav">{this.props.formSubmitText}</p>
-            </Link>
+
+            <div className="session-form-nav-container">
+              <Link 
+                to={`/${this.props.opposingPath}`}>
+                <p className="session-form-nav">{this.props.formSubmitText}</p>
+              </Link>
+              
+              { this.renderDemoAction() }
+
+            </div>
             
           </div>
         </div>
@@ -144,7 +233,6 @@ class SessionForm extends React.Component {
     )
 
   }
-
 
 }
 
