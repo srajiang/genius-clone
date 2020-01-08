@@ -22,7 +22,7 @@ export const createSong = song => (
   $.ajax({
 
     method: "POST",
-    url: `api/songs/${songId}`,
+    url: `api/songs/`,
     data: { song: song },
 
   })
@@ -35,6 +35,16 @@ export const updateSong = song => (
     method: "PATCH",
     url: `api/songs/${song.id}`,
     data: { song: song },
+
+  })
+)
+
+export const deleteSong = song => (
+
+  $.ajax({
+
+    method: "DELETE",
+    url: `api/songs/${song.id}`
 
   })
 )
