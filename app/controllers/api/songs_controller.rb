@@ -1,5 +1,4 @@
 class Api::SongsController < ApplicationController
-  before_action :set_song, only: [:show, :update]
   
   def index
     @songs = Song.all
@@ -7,34 +6,55 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
-    render :show
+    @song = Song.find_by(id: params[:id])
+    if !@song.nil?
+      render :show
+    else
+      render json: [`Song not found`], status: 422
+    end
   end
 
-  # def create
-  #   @song = Song.new(song_params)
-    
-  #   if @song.save
-  #     render :show
-  #   else
-  #     render json: @song.errors.full_messages, status: 422
-  #   end
-  # end
+  def create
+    @song = Song.new(song_params)
+    if @song.save
+      render :show
+    else
+      render json: @song.errors.full_messages, status: 422
+    end
+  end
 
-  # def update
-  #   if @song.update(song_params)
-  #     render :show
-  #   else
-  #     render :json @song.errors.full_messages, status: 422
-  #   end
-  # end
+  def update
+
+    @song = Song.find_by(id: params[:id])
+
+    if !@song.nil?
+
+      if @song.update(song_params)
+        render :show
+      else
+        render json: @song.errors.full_messages, status: 422
+      end
+
+    else 
+      render json: [`Song not found`], status: 422
+    end 
+
+  end
+
+  def destroy
+
+    @song = Song.find_by(id: params[:id])
+    if !@song.nil?
+      @song.destroy
+    end
+
+    render json: ["null"] 
+  end
 
   private
 
-  # def song_params
-
-  #   params.require(:song.permit(:title, :body, :album, :artist, :genre)
-  # end
-
+  def song_params
+    params.require(:song).permit(:title, :album, :artist, :genre, :about, :body => [])
+  end
   
 end

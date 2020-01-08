@@ -178,11 +178,8 @@ class SessionForm extends React.Component {
   }
 
   closeModal() {
-    console.log('closing');
     <Redirect exact to="/"></Redirect>
-
   }
-
 
 
   render() {
