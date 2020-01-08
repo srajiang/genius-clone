@@ -1,12 +1,15 @@
 class Api::SongsController < ApplicationController
-  # before_action :set_report, only: [:show, :update]
+  before_action :set_song, only: [:show, :update]
   
-  # def index
-  #   @songs = Song.all
-  # end
+  def index
+    @songs = Song.all
+    render :index
+  end
 
-  # def show
-  # end
+  def show
+    @song = Song.find(params[:id])
+    render :show
+  end
 
   # def create
   #   @song = Song.new(song_params)
@@ -26,14 +29,12 @@ class Api::SongsController < ApplicationController
   #   end
   # end
 
-  # private
+  private
+
   # def song_params
+
+  #   params.require(:song.permit(:title, :body, :album, :artist, :genre)
   # end
 
-  # def set_report
-  #   @song = Song.find(params[:id])
-  # rescue
-  #   render json: ['Song not found'], status: :not_found
-  # end
   
 end

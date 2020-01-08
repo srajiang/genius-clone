@@ -5,9 +5,7 @@ export const signup = user => (
         method: "POST",
         url: "api/users",
         data: { user: user }
-
     })
-
 )
 
 export const login = user => (
@@ -17,7 +15,6 @@ export const login = user => (
         method: "POST",
         url: "api/session",
         data: { user: user }
-
     })
 
 )
@@ -28,7 +25,6 @@ export const logout = () => (
 
         method: "DELETE",
         url: "api/session"
-
     })
 
 )
