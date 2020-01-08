@@ -14,7 +14,7 @@ class Api::SongsController < ApplicationController
     if @song.save
       render :show
     else
-      render json: @song.errors.full_messages, status: :unprocessable_entity
+      render json: @song.errors.full_messages, status: 422
     end
   end
 
@@ -22,7 +22,7 @@ class Api::SongsController < ApplicationController
     if @song.update(song_params)
       render :show
     else
-      render :json @song.errors.full_messages, status: :unprocessable_entity
+      render :json @song.errors.full_messages, status: 422
     end
   end
 
