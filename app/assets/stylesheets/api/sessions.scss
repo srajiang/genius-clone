@@ -45,7 +45,8 @@
 
 
 .app-logo {
-  width: 70%;
+  width: 200px;
+   height: 30px;
 }
 
 .session-form-overlay {
@@ -126,12 +127,16 @@
 
 }
 
-
 .session-form-input-email-address {
   display: flex;
   flex-direction: column;
 
 }
+
+.session-form-submit {
+  width: 75px;
+}
+
 
 .session-form-nav-container {
   display: flex;

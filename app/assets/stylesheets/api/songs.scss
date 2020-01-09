@@ -1,3 +1,141 @@
 // Place all the styles related to the api/songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chart-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4.5rem;
+}
+
+.chart-index > h1 {
+
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+.chart-index > h5 {
+
+  color: #FF1464;
+  font-size: .9rem;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  margin: .5rem;
+
+}
+
+.chart-index-filter {
+  margin: 2rem;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+}
+
+div.chart-index-filter:hover {
+  background-color: white;
+  color: black;
+}
+
+.chart-index-item {
+  display: flex;
+}
+
+.filter-text {
+
+  font-size: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+}
+
+.filter-text span {
+  font-size: 13px;
+}
+
+.chart-index-wrapper {
+  width: 80vw;
+
+}
+
+.chart-index-item {
+
+  display: flex;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  font-size: 24px;
+
+  border-bottom: 1px solid rgb(233, 233, 233);
+  
+}
+
+.chart-index-item:hover {
+
+  background-color: rgb(233, 233, 233);
+
+}
+
+.chart-index-item:visited {
+
+  color: black;
+}
+
+.item-idx {
+
+  padding-left: 20px;
+  flex: 1;
+}
+
+.item-img {
+  
+  flex: 1;
+}
+
+.item-title {
+  flex: 4;
+}
+
+.item-title span {
+  font-size: 12px;
+  font-weight: 500px;
+  color: #9a9a9a;
+}
+
+.item-artist {
+  flex: 2;
+}
+
+
+.nav-bar-sub-wrapper {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  height: 41px;
+  background-color: black;
+}
+
+
+.nav-bar-sub {
+  display: flex;
+  justify-content: center;
+
+  color: white;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
+.nav-bar-sub > a {
+  font-size: 14px;
+  
+  padding-right: 30px;
+  padding-left: 30px;
+  border-right: 2px solid white;
+
+  cursor: pointer;
+}

@@ -207,7 +207,7 @@ class SessionForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update('password')}
               />
-              <button className="btn" type="submit" >
+              <button className="btn session-form-submit" type="submit" >
                 {this.props.formType}
               </button>
             
