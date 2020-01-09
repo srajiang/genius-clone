@@ -7,10 +7,11 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find_by(id: params[:id])
+    debugger;
     if !@song.nil?
       render :show
     else
-      render json: [`Song not found`], status: 422
+      render json: ["Song not found"], status: 422
     end
   end
 
@@ -36,7 +37,7 @@ class Api::SongsController < ApplicationController
       end
 
     else 
-      render json: [`Song not found`], status: 422
+      render json: ["Song not found"], status: 422
     end 
 
   end

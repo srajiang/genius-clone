@@ -59,20 +59,6 @@ ActiveRecord::Base.transaction do
     about: about4
   )
 
-  # lyrics5 = ['[Verse 1]','Walking in my sleep','Like the naked trees','Will they wake up again?','Do they sleep, do they dream?', "[Verse 2]", 'Feel it as the wind strokes my skin', 'I am moved by the chill', 'Hear the winter bird sing']
-  # about5 = "This song draws parallels between nature and the soul – suggesting that our view of the world around us is influenced by our emotions and our history."
-  
-  # Song.create!(
-  #   title: "Winter Bird", 
-  #   album: "All My Demons Greeting Me as a Friend",
-  #   artist: "AURORA",
-  #   body: lyrics5, 
-  #   genre: "Pop",
-  #   about: about5
-  # )
-
-
-
   lyrics5 = ['[Verse 1]','Walking in my sleep','Like the naked trees','Will they wake up again?','Do they sleep, do they dream?', "[Verse 2]", 'Feel it as the wind strokes my skin', 'I am moved by the chill', 'Hear the winter bird sing']
   about5 = "This song draws parallels between nature and the soul – suggesting that our view of the world around us is influenced by our emotions and our history."
   
