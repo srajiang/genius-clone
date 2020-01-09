@@ -28,9 +28,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_12factor'
+gem 'aws-sdk-s3'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+# gem 'micro_magick'
+# gem 'imageMagick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
