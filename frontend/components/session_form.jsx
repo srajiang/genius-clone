@@ -22,6 +22,7 @@ class SessionForm extends React.Component {
     this.demo = this.demo.bind(this);
     this.demoEmail = this.demoEmail.bind(this);
     this.demoPassword = this.demoPassword.bind(this);
+    this.dismissModal = this.dismissModal.bind(this);
     
   }
 
@@ -181,15 +182,25 @@ class SessionForm extends React.Component {
     <Redirect exact to="/"></Redirect>
   }
 
+  dismissModal(e) {
+    console.log('event');
+    console.log(e);
+    console.log(e.currentTarget);
+    console.log(e.target);
+    if (e.currentTarget === e.target) {
+      this.props.history.push('/');
+    }
+  }
 
   render() {
 
     return (
 
       <div>
-        <div className="session-form-overlay"></div>
+        <div 
+          className="session-form-overlay"></div>
 
-        <div className="session-form-wrapper">
+        <div onClick={this.dismissModal} className="session-form-wrapper">
           
           <div className="session-form">
             
