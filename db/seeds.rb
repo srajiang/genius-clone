@@ -19,7 +19,7 @@ ActiveRecord::Base.transaction do
       album: 'Vespertine',
       artist: "Björk",
       body: lyrics,
-      genre: "pop",
+      genre: "Rap",
       about: about 
   )
 
@@ -31,7 +31,7 @@ ActiveRecord::Base.transaction do
       album: 'Vulnicura',
       artist: "Björk",
       body: lyrics2,
-      genre: "pop",
+      genre: "Pop",
       about: about2 
   )
 
@@ -43,7 +43,7 @@ ActiveRecord::Base.transaction do
       album: 'Post',
       artist: "Björk",
       body: lyrics3,
-      genre: "pop",
+      genre: "Pop",
       about: about3 
   )
 
@@ -55,7 +55,7 @@ ActiveRecord::Base.transaction do
     album: "Með suð í eyrum við spilum endalaust",
     artist: "Sigur Rós",
     body: lyrics4,
-    genre: "Post-rock", 
+    genre: "Rock", 
     about: about4
   )
 
@@ -67,7 +67,7 @@ ActiveRecord::Base.transaction do
     album: "All My Demons Greeting Me as a Friend",
     artist: "AURORA",
     body: ['[Verse 1]','Walking in my sleep','Like the naked trees','Will they wake up again?','Do they sleep, do they dream?', "[Verse 2]", 'Feel it as the wind strokes my skin', 'I am moved by the chill', 'Hear the winter bird sing'], 
-    genre: "Pop",
+    genre: "R&B",
     about: "This song draws parallels between nature and the soul – suggesting that our view of the world around us is influenced by our emotions and our history."
   )
   

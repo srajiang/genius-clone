@@ -30,12 +30,9 @@ ol[class] {
   padding: 0;
   list-style: none;
 }
-/* 
-a:visited {
-  color: black;
-} */
 
-body, h1, h2, h3, h4, p, ul[class], li[class], dl, dd, a {
+
+body, h1, h2, h3, h4, h5, p, ul[class], li[class], dl, dd, a {
 
   margin: 0;
   border: 0;
@@ -50,12 +47,12 @@ body, h1, h2, h3, h4, p, ul[class], li[class], dl, dd, a {
 
 }
 
-/*  */
+/* styles for body */
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  font-family: 'Public Sans', sans-serif;
+  font-family: sans-serif;
 
 }
 
@@ -65,7 +62,6 @@ body {
   background: transparent;
   font-size: 15px;
   padding: 5px;
-  width: 75px;
   cursor: pointer;
 
   transition: all .3s ease;
