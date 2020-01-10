@@ -25,7 +25,7 @@ ActiveRecord::Base.transaction do
       about: about 
   )
 
-  file = open('/Users/sarahjiang/Desktop/genius-clone-album-covers/pagan_poetry.jpg');
+  file = open('https://snillingur-seed.s3-us-west-1.amazonaws.com/pagan_poetry.jpg');
   song1.photo.attach(io: file, filename: 'pagan_poetry.jpg')
 
   # 2
@@ -42,7 +42,7 @@ ActiveRecord::Base.transaction do
       about: about2 
   )
 
-  file = open('/Users/sarahjiang/Desktop/genius-clone-album-covers/black_lake.jpg');
+  file = open('https://snillingur-seed.s3-us-west-1.amazonaws.com/black_lake.jpg');
   song2.photo.attach(io: file, filename: 'black_lake.jpg')
 
   # 3
@@ -59,7 +59,7 @@ ActiveRecord::Base.transaction do
       about: about3 
   )
 
-  file = open('/Users/sarahjiang/Desktop/genius-clone-album-covers/quiet.jpg');
+  file = open('https://snillingur-seed.s3-us-west-1.amazonaws.com/quiet.jpg');
   song3.photo.attach(io: file, filename: 'quiet.jpg')
 
 
@@ -77,7 +77,7 @@ ActiveRecord::Base.transaction do
     about: about4
   )
 
-  file = open('/Users/sarahjiang/Desktop/genius-clone-album-covers/alright.jpg');
+  file = open('https://snillingur-seed.s3-us-west-1.amazonaws.com/alright.jpg');
   song4.photo.attach(io: file, filename: 'alright.jpg')
 
   # 5 
@@ -94,7 +94,7 @@ ActiveRecord::Base.transaction do
     about: "This song draws parallels between nature and the soul – suggesting that our view of the world around us is influenced by our emotions and our history."
   )
 
-  file = open('/Users/sarahjiang/Desktop/genius-clone-album-covers/winter.png');
+  file = open('https://snillingur-seed.s3-us-west-1.amazonaws.com/winter.png');
   song5.photo.attach(io: file, filename: 'winter.png')
   
 end
