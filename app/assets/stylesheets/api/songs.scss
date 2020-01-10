@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/* ------ ChartIndex -------- */
+
+.chart-index-wrapper {
+  width: 80vw;
+
+}
+
 .chart-index {
   display: flex;
   flex-direction: column;
@@ -10,7 +18,7 @@
 }
 
 .chart-index > h1 {
-
+  
   font-weight: bold;
   font-size: 5rem;
 }
@@ -25,11 +33,48 @@
 
 }
 
-.chart-index-filter {
+
+.chart-index-item {
+  
+  display: flex;
+  align-items: center;
+  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+  font-size: 24px;
+  
+  border-bottom: 1px solid rgb(233, 233, 233);
+  
+}
+  .chart-index-item:hover {
+  
+    background-color: rgb(233, 233, 233);
+  
+  }
+
+  .chart-index-item:visited {
+
+  color: black;
+}
+
+.chart-index-filter-wrapper {
   margin: 2rem;
+  border: 2px solid black;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: content-box;
+
+}
+
+.chart-index-filter {
   padding: 10px;
   text-align: center;
   display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 div.chart-index-filter:hover {
@@ -37,10 +82,20 @@ div.chart-index-filter:hover {
   color: black;
 }
 
-.chart-index-item {
-  display: flex;
+.drop-down-menu {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  border: 2px solid black;
+  border-top: #eaeaea;
+  top: 39px;
+  align-self: center;
+  box-sizing: content-box;
 }
 
+
+
+/*  -------- ChartIndexFilter --------*/
 .filter-text {
 
   font-size: 15px;
@@ -53,34 +108,6 @@ div.chart-index-filter:hover {
   font-size: 13px;
 }
 
-.chart-index-wrapper {
-  width: 80vw;
-
-}
-
-.chart-index-item {
-
-  display: flex;
-
-  padding-top: 30px;
-  padding-bottom: 30px;
-
-  font-size: 24px;
-
-  border-bottom: 1px solid rgb(233, 233, 233);
-  
-}
-
-.chart-index-item:hover {
-
-  background-color: rgb(233, 233, 233);
-
-}
-
-.chart-index-item:visited {
-
-  color: black;
-}
 
 .item-idx {
 
@@ -91,6 +118,12 @@ div.chart-index-filter:hover {
 .item-img {
   
   flex: 1;
+  padding-right: 30px;
+
+}
+
+.item-img  > img {
+  height: 100px;
 }
 
 .item-title {
@@ -107,7 +140,25 @@ div.chart-index-filter:hover {
   flex: 2;
 }
 
+.drop-down-active {
+  transform: rotateX(180deg);
+}
 
+.drop-down-row {
+  display: flex;
+  padding: 8px;
+  border-top: .09rem solid #eaeaea;
+}
+
+.genre {
+  flex: 1;
+}
+
+.filter {
+  flex: 1;
+}
+
+/*  -------- NavBarSub  -------- */
 .nav-bar-sub-wrapper {
 
   display: flex;
@@ -130,7 +181,7 @@ div.chart-index-filter:hover {
   
 }
 
-.nav-bar-sub > a {
+.nav-bar-sub > div {
   font-size: 14px;
   
   padding-right: 30px;
@@ -139,3 +190,24 @@ div.chart-index-filter:hover {
 
   cursor: pointer;
 }
+
+div.nav-bar-sub-icons {
+
+  border: none;
+
+}
+
+a.fa-icon {
+
+  color: #e8e8e8;
+  margin-right: 15px;
+  font-size: 16px;
+
+}
+
+a.fa-icon:visited {
+
+  color: #e8e8e8;
+
+}
+
