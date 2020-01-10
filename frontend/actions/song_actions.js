@@ -63,7 +63,7 @@ export const updateSong = song => dispatch => SongAPIUtil.updateSong(song)
     err => dispatch(receiveSongErrors(err))
   );
 
-export const fetchSongs = () => dispatch => SongAPIUtil.fetchSongs()
+export const fetchSongs = (genre) => dispatch => SongAPIUtil.fetchSongs(genre)
   .then(
     songs => dispatch(receiveAllSongs(songs)),
     err => dispatch(receiveSongErrors(err))

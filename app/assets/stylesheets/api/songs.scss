@@ -42,16 +42,18 @@
   padding-top: 10px;
   padding-bottom: 10px;
   
-  font-size: 24px;
+  font-size: 22px;
   
   border-bottom: 1px solid rgb(233, 233, 233);
-  
+  border-radius: 3px;
 }
-  .chart-index-item:hover {
+
+.chart-index-item:hover {
+
+  background-color: rgb(233, 233, 233);
   
-    background-color: rgb(233, 233, 233);
-  
-  }
+
+}
 
   .chart-index-item:visited {
 
@@ -67,20 +69,24 @@
   position: relative;
   box-sizing: content-box;
 
+  transition: all .3s ease;
+}
+
+.chart-index-filter-wrapper:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
 }
 
 .chart-index-filter {
   padding: 10px;
   text-align: center;
   display: flex;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 div.chart-index-filter:hover {
   background-color: white;
   color: black;
 }
+
 
 .drop-down-menu {
   position: absolute;
@@ -91,8 +97,8 @@ div.chart-index-filter:hover {
   top: 39px;
   align-self: center;
   box-sizing: content-box;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
 }
-
 
 
 /*  -------- ChartIndexFilter --------*/
@@ -145,17 +151,27 @@ div.chart-index-filter:hover {
 }
 
 .drop-down-row {
+  font-size: 0.875rem;
   display: flex;
-  padding: 8px;
   border-top: .09rem solid #eaeaea;
 }
 
-.genre {
+.drop-down-row > p {
+  font-size: 0.875rem;
+  padding-left: 8px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 8px;
   flex: 1;
+  
+}
+
+.genre {
+  border-right: .09rem solid #eaeaea;
 }
 
 .filter {
-  flex: 1;
+  // text-align: right;
 }
 
 /*  -------- NavBarSub  -------- */

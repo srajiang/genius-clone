@@ -1,9 +1,9 @@
-export const fetchSongs = () => (
+export const fetchSongs = (genre) => (
 
   $.ajax({
 
     method: "GET",
-    url: `api/songs`,
+    url: `api/songs/?genre=${genre}`,
   })
 )
 

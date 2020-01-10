@@ -1,24 +1,18 @@
 import React from 'react';
 import ChartIndexFilterRow from './chart_index_filter_row';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 class ChartIndexFilter extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
-
       genre: this.props.genre,
-      number_songs: "5",
       drop_down_active: false
-
     }
 
     this.rotate = this.rotate.bind(this);
     this.renderDropdownArrow = this.renderDropdownArrow.bind(this);
     this.renderDropdownMenu = this.renderDropdownMenu.bind(this);
-
   }
 
   rotate() {
@@ -53,19 +47,19 @@ class ChartIndexFilter extends React.Component {
   }
   
   renderDropdownMenu() {
-
+    let { updateGenre, updateNumSongs } = this.props;
+    
     if ( this.state.drop_down_active ) {
 
       /* drop down categories */
       const genre = ["GENRE", 'All', 'Pop', 'Rock', 'Hip Hop', 'Death Metal'];
-      const results = ["RESULTS", 5, 10, 20, "-", "-"];
+      const results = ["RESULTS", 5, 10, 20, "", ""];
 
       return (
         <div className="drop-down-menu">
-          { genre.map ( (entry, idx) => <ChartIndexFilterRow key={idx} genre={entry} result={results[idx]} /> )}
+          {genre.map((entry, idx) => <ChartIndexFilterRow key={idx} genre={entry} result={results[idx]} updateGenre={updateGenre} updateNumSongs={updateNumSongs} /> )}
         </div>
       )
-
     }
   }
 
@@ -74,6 +68,7 @@ class ChartIndexFilter extends React.Component {
   
     return (
 
+    
     <div className="chart-index-filter-wrapper">
       
       <div className="chart-index-filter">
