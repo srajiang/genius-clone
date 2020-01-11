@@ -7,6 +7,8 @@ class ChartIndex extends React.Component {
 
   constructor(props) {
     super(props);
+    
+    this.filterElement = React.createRef();
 
     this.state = {
       genre : "All",
@@ -41,12 +43,13 @@ class ChartIndex extends React.Component {
 
     return (
 
-      <div className="chart-index">
+      <div onClick={() => this.filterElement.current.rotate()} className="chart-index">
 
         <h1>CHARTS</h1>
         <h5>TRENDING ON SNILLINGUR</h5>
 
         < ChartIndexFilter 
+          ref = {this.filterElement}
           genre={this.state.genre} 
           updateGenre={this.updateGenre}
           updateNumSongs={this.updateNumSongs}
@@ -64,3 +67,7 @@ class ChartIndex extends React.Component {
 }
 
 export default ChartIndex;
+
+
+/* FOR LATER */
+// <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
