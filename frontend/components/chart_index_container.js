@@ -8,7 +8,7 @@ const mSTP = (state) => ({
 
 const mDTP = dispatch => ({
 
-  fetchSongs: () => dispatch(fetchSongs())
+  fetchSongs: (genre) => dispatch(fetchSongs(genre))
 
 });
 

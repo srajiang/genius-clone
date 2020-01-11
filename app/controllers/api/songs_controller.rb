@@ -1,8 +1,19 @@
 class Api::SongsController < ApplicationController
   
+  MAX_PAYLOAD_SIZE = 50;
+
   def index
-    @songs = Song.all
+    
+    case params[:genre]
+    when "All"
+      @songs = Song.all.with_attached_photo.limit(MAX_PAYLOAD_SIZE)
+    else 
+      @songs = Song.where([ "genre = :genre", { genre: params[:genre]} ]).with_attached_photo.limit(MAX_PAYLOAD_SIZE)
+    end
+
     render :index
+
+
   end
 
   def show
