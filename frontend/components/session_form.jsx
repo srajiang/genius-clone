@@ -12,9 +12,7 @@ class SessionForm extends React.Component {
       email: "",
       password: "",
       email_or_user: ""
-
     }
-
 
     this.matchEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.handleSubmit = this.handleSubmit.bind(this);    

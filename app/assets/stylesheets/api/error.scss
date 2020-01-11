@@ -1,0 +1,55 @@
+.error-page {
+
+  border: 2px solid black;
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  padding: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 30vh;
+
+  transition: all .3s ease;
+
+  cursor: pointer;
+
+  position: relative;
+} 
+
+.error-page > p:nth-child(2) {
+
+  font-size: 36px;
+  padding-bottom: 20px;
+}
+
+.error-page > p {
+
+  font-size: 20px;
+  text-align: center;
+}
+
+.error-page > p:last-child {
+
+  padding-bottom: 20px; 
+
+}
+p.go_back {
+
+  position: absolute;
+  font-size: 56px;
+  left: -45px;
+  top: 0px;
+  line-height: 0.5em;
+
+  transition: all .3s ease;
+}
+
+.error-page:hover p.go_back {
+
+  transform: translateX(-10px)
+  
+}
