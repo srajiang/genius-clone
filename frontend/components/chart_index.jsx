@@ -17,7 +17,7 @@ class ChartIndex extends React.Component {
 
     this.updateGenre = this.updateGenre.bind(this);
     this.updateNumSongs = this.updateNumSongs.bind(this);
-
+    this.dismissFilter = this.dismissFilter.bind(this);
   }
 
   /* will be called by ChartIndexFilter component */
@@ -31,7 +31,14 @@ class ChartIndex extends React.Component {
   updateNumSongs (newNum) {
 
     this.setState({ num_songs_to_display: newNum });
+  }
 
+  dismissFilter() {
+
+    if (this.filterElement.current.state.drop_down_active === true) {
+      this.filterElement.current.rotate()    
+    }
+    
   }
 
   componentDidMount() {
@@ -43,7 +50,7 @@ class ChartIndex extends React.Component {
 
     return (
 
-      <div onClick={() => this.filterElement.current.rotate()} className="chart-index">
+      <div onClick={this.dismissFilter} className="chart-index">
 
         <h1>CHARTS</h1>
         <h5>TRENDING ON SNILLINGUR</h5>
