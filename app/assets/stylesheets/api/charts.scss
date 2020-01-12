@@ -47,14 +47,13 @@
   border-bottom: 1px solid rgb(233, 233, 233);
   border-radius: 3px;
 
-  color: black;
+  color: black
 }
 
 .chart-index-item:hover {
 
   background-color: rgb(233, 233, 233);
   
-
 }
 
   .chart-index-item:visited {
@@ -158,7 +157,7 @@ div.chart-index-filter:hover {
   border-top: .09rem solid #eaeaea;
 }
 
-.drop-down-row > p {
+.drop-down-row > div {
   font-size: 0.875rem;
   padding-left: 8px;
   padding-top: 10px;
@@ -170,10 +169,13 @@ div.chart-index-filter:hover {
 
 .genre {
   border-right: .09rem solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter {
-  // text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*  -------- NavBarSub  -------- */
