@@ -6,7 +6,6 @@ class ChartIndexFilter extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      genre: this.props.genre,
       drop_down_active: false
     }
 
@@ -47,7 +46,8 @@ class ChartIndexFilter extends React.Component {
   }
   
   renderDropdownMenu() {
-    let { updateGenre, updateNumSongs } = this.props;
+    
+    let { updateGenre, updateNumSongs, currentSelectedGenre, currentSelectedResult } = this.props;
     
     if ( this.state.drop_down_active ) {
 
@@ -57,24 +57,23 @@ class ChartIndexFilter extends React.Component {
 
       return (
         <div className="drop-down-menu">
-          {genre.map((entry, idx) => <ChartIndexFilterRow key={idx} genre={entry} result={results[idx]} updateGenre={updateGenre} updateNumSongs={updateNumSongs} /> )}
+          {genre.map((entry, idx) => <ChartIndexFilterRow key={idx} genre={entry} result={results[idx]} updateGenre={updateGenre} updateNumSongs={updateNumSongs} currentSelectedGenre={currentSelectedGenre} currentSelectedResult={currentSelectedResult} /> )}
         </div>
       )
     }
   }
 
   render() {
-
-  
+    // debugger;
     return (
 
     
     <div className="chart-index-filter-wrapper">
       
-      <div className="chart-index-filter">
+      <div onClick={this.rotate} className="chart-index-filter">
 
         <div className ="filter-text">
-            <p>{this.state.genre.toUpperCase()}&nbsp;&nbsp;<span>&#8260;</span>&nbsp;&nbsp;FILTER</p>
+            <p>{this.props.currentSelectedGenre.toUpperCase()}&nbsp;&nbsp;<span>&#8260;</span>&nbsp;&nbsp;FILTER</p>
         </div>
 
         {this.renderDropdownArrow()}
@@ -82,6 +81,7 @@ class ChartIndexFilter extends React.Component {
       </div>
       
       { this.renderDropdownMenu() }
+
     </div>
     )
 

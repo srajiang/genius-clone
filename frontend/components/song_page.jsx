@@ -10,7 +10,6 @@ class SongPage extends React.Component {
   componentDidMount() {
     this.props.fetchSong(this.props.match.params.songId)
       .then(() => console.log(this.props));
-    // console.log(this.props);
   }
 
   render() {
@@ -18,10 +17,9 @@ class SongPage extends React.Component {
     if (this.props.song === undefined) {
       return null;
     }
-    
+
     return (
       <SongPageHeader song={this.props.song}/>
-      // <div>I am a song page header</div>
     )
   }
 

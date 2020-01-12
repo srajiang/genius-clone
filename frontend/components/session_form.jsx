@@ -181,10 +181,7 @@ class SessionForm extends React.Component {
   }
 
   dismissModal(e) {
-    console.log('event');
-    console.log(e);
-    console.log(e.currentTarget);
-    console.log(e.target);
+    
     if (e.currentTarget === e.target) {
       this.props.history.push('/');
     }

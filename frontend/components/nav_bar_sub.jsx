@@ -15,9 +15,9 @@ const NavBarSub = () => {
 
         <div className="nav-bar-sub-icons">
 
-          <a href="https://www.linkedin.com/in/sjiang8/" className="fa-icon"><FontAwesomeIcon icon={faLinkedin} /></a>
-          <a href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faGithub} /></a>
-          <a href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faPortrait} /></a>
+          <a target="_blank" href="https://www.linkedin.com/in/sjiang8/" className="fa-icon"><FontAwesomeIcon icon={faLinkedin} /></a>
+          <a target="_blank" href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faGithub} /></a>
+          <a target="_blank" href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faPortrait} /></a>
 
         </div>
         

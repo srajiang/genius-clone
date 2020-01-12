@@ -11,7 +11,7 @@ class ChartIndex extends React.Component {
     this.filterElement = React.createRef();
 
     this.state = {
-      genre : "All",
+      currentSelectedGenre : "All",
       num_songs_to_display : 5
     }
 
@@ -22,27 +22,41 @@ class ChartIndex extends React.Component {
 
   /* will be called by ChartIndexFilter component */
   updateGenre(newGenre) {
+    if (newGenre !== "GENRE") {
 
-    this.props.fetchSongs(newGenre)
-      .then((newGenre) => this.setState({ genre: newGenre }));
+      this.props.fetchSongs(newGenre)
+        .then(() => {
+          this.setState({ currentSelectedGenre: newGenre });
+        });
+
+    }
   }
 
   /* will be called by ChartIndexFilter component */  
-  updateNumSongs (newNum) {
+  updateNumSongs(newNum) {
 
-    this.setState({ num_songs_to_display: newNum });
+  
+    if (newNum !== "RESULTS" && newNum !== "") {
+
+      newNum = parseInt(newNum);
+
+      this.setState({ num_songs_to_display: newNum });
+    }
   }
 
-  dismissFilter() {
+  dismissFilter(e) {
 
-    if (this.filterElement.current.state.drop_down_active === true) {
+    if (
+        e.target.className === "chart-index" &&   /* user must click on the chart-index, not a subcomponent such as the filter */
+        this.filterElement.current.state.drop_down_active === true /* filter must be active to be dismissed */
+      ) {
       this.filterElement.current.rotate()    
     }
     
   }
 
   componentDidMount() {
-    this.props.fetchSongs(this.state.genre);
+    this.props.fetchSongs(this.state.currentSelectedGenre);
   }
 
   render() {
@@ -55,12 +69,15 @@ class ChartIndex extends React.Component {
         <h1>CHARTS</h1>
         <h5>TRENDING ON SNILLINGUR</h5>
 
-        < ChartIndexFilter 
-          ref = {this.filterElement}
-          genre={this.state.genre} 
-          updateGenre={this.updateGenre}
-          updateNumSongs={this.updateNumSongs}
-        />
+        <div className="chart-index-filter">
+          < ChartIndexFilter 
+            ref = {this.filterElement}
+            updateGenre={this.updateGenre}
+            updateNumSongs={this.updateNumSongs}
+            currentSelectedGenre={this.state.currentSelectedGenre}
+            currentSelectedResult={this.state.num_songs_to_display}
+          />
+        </div>
 
         <div className="chart-index-wrapper">
           { songs.map((song, songIdx) => <ChartIndexItem key={song.id} song={song} songIdx={songIdx + 1} />).slice(0, this.state.num_songs_to_display)}
