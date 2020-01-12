@@ -1,13 +1,26 @@
-// .song-page-header-overlay {
-//   display: flex;
+.song-page-header {
+  height: 30vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
 
-// }
+  position: relative;
+}
+
+.song-page-header-overlay {
+
+  background-color: black;
+  opacity: 75%;
+  height: 100%;
+}
 
 .song-page-header-content {
+  position: absolute;
   display: flex;
   z-index: 10;
-  background-color: #00000063;
-  background-image: url();
+  top: 3vh;
+  left: 10%;
 }
 
 .song-page-header-content img {
@@ -15,4 +28,52 @@
   width: 220px;
   height: 220px;
 
+}
+
+.album-cover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+}
+
+.song-page-header-detail {
+  padding: 15px
+}
+
+.song-page-header-detail h2 {
+  font-size: 36px;
+  color: #FFFF64;
+  padding-bottom: 5px;
+}
+
+.song-page-header-detail h3 {
+  font-size: 24px;
+  color: white;
+  padding-bottom: 10px;
+}
+
+.song-page-header-detail p {
+  color: #9a9a9a;
+  font-size: 18px
+}
+
+.song-page-detail {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+
+  padding: 30px;
+  max-width: 80vh;
+  margin: auto;
+}
+
+.song-page-detail div {
+}
+
+.song-page-lyrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.song-page-lyrics p {
+  padding-bottom: 8px;
 }

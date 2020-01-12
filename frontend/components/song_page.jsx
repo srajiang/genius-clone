@@ -1,5 +1,7 @@
 import React from 'react';
 import SongPageHeader from './song_page_header';
+import SongPageLyrics from './song_page_lyrics';
+import SongPageAnnotation from './song_page_annotation';
 
 class SongPage extends React.Component {
 
@@ -19,7 +21,13 @@ class SongPage extends React.Component {
     }
 
     return (
-      <SongPageHeader song={this.props.song}/>
+      <div>
+        <SongPageHeader song={this.props.song}/>
+        <div className="song-page-detail">
+          <div><SongPageLyrics lyrics={this.props.song.body}/></div>
+          <div><SongPageAnnotation /></div>
+        </div>
+      </div>
     )
   }
 

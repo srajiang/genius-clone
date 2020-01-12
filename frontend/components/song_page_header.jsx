@@ -4,17 +4,24 @@ const SongPageHeader = (props) => {
   
   return (
 
-    <div className="song-page-header">
+    <div 
+      style={{ backgroundImage: "url(" + props.song.image_url + ")" }}
+      className="song-page-header"
+    >
+      
+      <div className="song-page-header-overlay"></div>
 
-      {/* <div className="song-page-header-overlay"></div> */}
       <div className="song-page-header-content">
       
-        <div><img src={props.song.image_url} /></div>
+        <div className="album-cover"><img src={props.song.image_url} /></div>
 
-        <div className="detail">
+        <div className="song-page-header-detail">
           <h2>{props.song.title}</h2>
           <h3>{props.song.artist}</h3>
-          <h3>Album {props.song.album}</h3>
+          <div>
+            <p>{props.song.album}</p>
+          </div>
+
         </div>
       </div>
 
