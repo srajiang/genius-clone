@@ -1,13 +1,23 @@
 import React from 'react';
 
-const SongPageAnnotation = (props) => {
+class SongPageAnnotation extends React.Component {
 
-return (
+  constructor(props) {
+    super(props);
 
-  <div>I am a Song Page Annotation</div>
+  }
 
-)
+  render() {
 
-}
+      return (
+      
+      <div>
+        <p className="song-page-annotation-title">ABOUT "{this.props.song.title.toUpperCase()}"</p>
+        <p className="song-page-annotation-about">{this.props.song.about}</p>
+      </div>
+      )
+    
+    }
+  }
 
 export default SongPageAnnotation;

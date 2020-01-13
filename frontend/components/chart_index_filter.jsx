@@ -64,7 +64,6 @@ class ChartIndexFilter extends React.Component {
   }
 
   render() {
-    // debugger;
     return (
 
     
