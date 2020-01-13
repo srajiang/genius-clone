@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log('handling submit');
     e.preventDefault;
     
     /* remove the temporary piece of state to track email_or_user */
