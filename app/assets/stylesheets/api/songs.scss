@@ -60,12 +60,9 @@
   justify-content: center;
   font-family: sans-serif;
 
-  padding: 30px;
-  max-width: 80vh;
-  margin: auto;
-}
 
-.song-page-detail div {
+
+  background-color: #f7f7f7;
 }
 
 .song-page-lyrics {
@@ -76,4 +73,37 @@
 
 .song-page-lyrics p {
   padding-bottom: 8px;
+  font-size: 18px;
+}
+
+.song-page-detail-wrapper {
+
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin: auto;
+  padding: 30px;
+  width: 80%;
+
+}
+
+
+p.song-page-lyrics-title, .song-page-annotation-title {
+  color: #9a9a9a;
+  font-size: 12px;
+  letter-spacing: .08em;
+}
+
+
+.song-page-detail-annotation {
+  max-width: 40%;
+}
+
+.song-page-annotation-title {
+
+  padding-bottom: 30px;
+}
+
+.song-page-annotation-about {
+  line-height: 1.5em;
 }

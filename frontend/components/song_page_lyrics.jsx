@@ -1,14 +1,27 @@
 import React from 'react';
-// import SongPageLyricLine from './song_page_lyric_line';
 
-const SongPageLyrics = ({lyrics}) => {
+const SongPageLyrics = ({song}) => {
 
   return (
     <div className ="song-page-lyrics">
-      <p>Lyrics</p>  
+      <p className="song-page-lyrics-title">{song.title.toUpperCase()} LYRICS</p>  
       
-      {lyrics.map((line, idx) => <p key={idx} >{line}</p>)}
-      
+      {song.body.map( (line, idx) => {
+          if (line[0] === "[") {
+
+            return (
+            <div key={idx}>
+              <br></br>
+              <p key={idx} >{line}</p>
+            </div>)
+
+          } else {
+
+            return <p key={idx} > {line}</p>
+          }
+        })
+      }
+
     </div>
   )
 
