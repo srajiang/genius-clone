@@ -8,6 +8,12 @@ class User < ApplicationRecord
     before_validation :ensure_token
     attr_reader :password
 
+    has_many :annotations,
+        primary_key: :id,
+        foreign_key: :annotator_id,
+        class_name: :Annotation
+
+
     def self.find_by_credentials(login, password)
         user = User.find_by(username: login) || User.find_by(email: login)
       

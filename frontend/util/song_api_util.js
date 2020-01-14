@@ -3,7 +3,7 @@ export const fetchSongs = (genre) => (
   $.ajax({
 
     method: "GET",
-    url: `api/songs/?genre=${genre}`,
+    url: `api/songs/?genre=${genre}`
   })
 )
 
@@ -12,7 +12,7 @@ export const fetchSong = songId => (
   $.ajax({
 
     method: "GET",
-    url: `api/songs/${songId}`,
+    url: `api/songs/${songId}`
 
   })
 )
@@ -23,7 +23,7 @@ export const createSong = song => (
 
     method: "POST",
     url: `api/songs/`,
-    data: { song: song },
+    data: { song: song }
 
   })
 )
@@ -34,7 +34,7 @@ export const updateSong = song => (
 
     method: "PATCH",
     url: `api/songs/${song.id}`,
-    data: { song: song },
+    data: { song: song }
 
   })
 )

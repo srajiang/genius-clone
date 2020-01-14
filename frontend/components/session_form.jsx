@@ -25,14 +25,13 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('handling submit');
+
     e.preventDefault;
-    
     /* remove the temporary piece of state to track email_or_user */
     let user = this.state;
     delete user.email_or_user;
     
-    this.props.action(user);
+    this.props.action(user).then(() => this.closeModal());
 
   }
 
@@ -144,7 +143,7 @@ class SessionForm extends React.Component {
     setTimeout( () => this.demoPassword(password, intervalSpeed), demoEmailTime);
     setTimeout(() => this.props.action(user), totalDemoTime);
     setTimeout(() => this.closeModal(), totalDemoTime + buffer);
-
+    
   }
 
   demoEmail(email, intervalSpeed) {
