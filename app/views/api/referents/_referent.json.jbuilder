@@ -1,0 +1,1 @@
+json.extract! referent, :fragment_range_start, :fragment_range_end, :song_id, :id

@@ -11,10 +11,14 @@ ActiveRecord::Base.transaction do
  
   User.destroy_all
   Song.destroy_all
+  Referent.destroy_all
+  Annotation.destroy_all
+
+  # Songs
 
   # 0
   user = User.create!( email: "therealbjork@bjork.com", username: "therealbjork", password: "itsohsoquiet")
-
+  
   # 1
 
   lyrics = ["[Verse 1]","Pedalling through","The dark currents", "I find an accurate copy", "A blueprint of the pleasure in me", "[Chorus 1]", "(Swirling black lilies totally ripe)", "A secret code carved", "A secret code carved", "(Swirling black lilies totally ripe)", "[Verse 2]", "He offers a handshake", "Crooked five fingers", "They form a pattern", "Yet to be matched", "[Chorus 2]", "On the surface simplicity", "(Swirling black lilies totally ripe)", "But the darkest pit in me","And it's pagan poetry", "(Swirling black lilies totally ripe)", "Pagan poetry"]
@@ -93,7 +97,7 @@ ActiveRecord::Base.transaction do
     title: "Winter Bird", 
     album: "All My Demons Greeting Me as a Friend",
     artist: "AURORA",
-    body: ['[Verse 1]','Walking in my sleep','Like the naked trees','Will they wake up again?','Do they sleep, do they dream?', "[Verse 2]", 'Feel it as the wind strokes my skin', 'I am moved by the chill', 'Hear the winter bird sing'], 
+    body: ['[Verse 1]','Walking in my sleep','Like the naked trees','Will they wake up again?','Do they sleep, do they dream?', "[Verse 2]", 'Feel it as the wind strokes my skin', 'I am moved by the chill', 'Hear the winter bird sing', "Ah-ah-ah-ah-ah-ah-ah-ah", "Ah-ah-ah-ah-ah-ah-ah-ah", "[Chorus]", "My tears are always frozen", "I can see the air I breathe", "Got my fingers painting pictures", "On the glass in front of me", "Lay me by the frozen river", "Where the boats have passed me by", "All I need is to remember", "How it was to feel alive", "[Verse 3]", "Silent days, violent shades", "We are dancing again","In a dream, by the lake", "Ah-ah-ah-ah-ah-ah-ah-ah", "Ah-ah-ah-ah-ah-ah-ah", "[Chorus]", "My tears are always frozen", "I can see the air I breathe", "Got my fingers painting pictures", "On the glass in front of me", "Lay me by the frozen river", "Where the boats have passed me by", "All I need is to remember", "How it was to feel alive", "[Bridge]", "Rest against my pillow like the ageing winter sun", "Only wake each morning to remember that you're gone", "So I drift away again", "To winter I belong", "Ah-ah-ah-ah-ah-ah-ah-ah", "Ah-ah-ah-ah-ah-ah-ah", 'Ah-ah-ah-ah-ah-ah-ah-ah', 'Ah-ah-ah-ah-ah-ah-ah','Ah-ah-ah-ah-ah-ah-ah-ah', 'Ah-ah-ah-ah-ah-ah-ah', "[Chorus]", "My tears are always frozen", "I can see the air I breathe", "Got my fingers painting pictures", "On the glass in front of me", "Lay me by the frozen river", "Where the boats have passed me by", "All I need is to remember", "How it was to feel alive", "[Post-Chorus]", "My tears are always frozen", 'My tears are always frozen', "My tears are always frozen", "[Outro]", "All I need is to remember", "How it was to feel alive", "I need to remember", "How it was to feel alive"], 
     genre: "Pop",
     about: "This song draws parallels between nature and the soul – suggesting that our view of the world around us is influenced by our emotions and our history."
   )
@@ -101,6 +105,63 @@ ActiveRecord::Base.transaction do
   file = open("https://snillingur-seed.s3-us-west-1.amazonaws.com/winter.png");
   song5.photo.attach(io: file, filename: 'winter.png')
   
+  # Referents
+
+  ref1 = Referent.create!(
+    fragment_range_start: 1,
+    fragment_range_end: 3,
+    song_id: song5.id
+  )
+
+  ref2 = Referent.create!(
+    fragment_range_start: 3,
+    fragment_range_end: 5,
+    song_id: song5.id
+  )
+
+  ref3 = Referent.create!(
+    fragment_range_start: 12,
+    fragment_range_end: 14,
+    song_id: song5.id
+  )
+ 
+  ref4 = Referent.create!(
+    fragment_range_start: 14,
+    fragment_range_end: 16,
+    song_id: song5.id
+  )
+
+# # Annotations
+
+  annot1 = Annotation.create!(
+
+    body: "Aurora sets the tone for delving into a fantasy world. Asleep, she cannot be sure whether what she is seeing and feeling is real or a projection of her mind. Just like in her song “Conqueror” , the validity of Aurora’s own thoughts are brought into question.",
+    referent_id: ref1.id,
+    annotator_id: user.id 
+  )
+
+  annot2 = Annotation.create!(
+
+    body: "Aurora’s use of natural and mystical imagery sets a bleak and chilling tone that pervades the song.She goes on to demand whether the people she has lost are merely sleeping, or dead and never-to-return. Compare her earlier song “Under Stars” where she chants “they have only fallen asleep, they have only fallen asleep…”, comparing dreams to death in a similar way.",
+    referent_id: ref2.id,
+    annotator_id: user.id 
+  )
+
+  annot3 = Annotation.create!(
+
+    body: "Aurora uses vibrant nature imagery to describe herself as she walks through an icy forest on a cold day. Her tears freeze as soon as they escape her eyes, and her breath forms mist as she exhales.",
+    referent_id: ref3.id,
+    annotator_id: user.id 
+  )
+
+  annot4 = Annotation.create!(
+
+    body: "The cold temperatures have frozen the glass of her window, allowing her to draw pictures on them. These lines have a clever, if subtle, double-meaning as Aurora seems to reference the iconic hand movements she makes as she performs – ‘painting pictures’.",
+    referent_id: ref4.id,
+    annotator_id: user.id 
+  )
+
+
 end
 
 

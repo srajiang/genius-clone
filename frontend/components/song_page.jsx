@@ -11,6 +11,7 @@ class SongPage extends React.Component {
   }
   componentDidMount() {
     this.props.fetchSong(this.props.match.params.songId);
+    this.props.fetchReferents(this.props.match.params.songId);
   }
 
   render() {
@@ -19,6 +20,8 @@ class SongPage extends React.Component {
       return null;
     }
 
+    let { song, referents, createReferent } = this.props;
+
     return (
       <div className="song-page">
         
@@ -26,7 +29,12 @@ class SongPage extends React.Component {
         
         <div className="song-page-detail">
           <div className="song-page-detail-wrapper">
-            <div><SongPageLyrics song={this.props.song} lyrics={this.props.song.body}/></div>
+            <div><SongPageLyrics 
+                  song={song} 
+                  lyrics={song.body} 
+                  referents={referents} 
+                  createReferent={createReferent} />
+            </div>
             <div className="song-page-detail-annotation"><SongPageAnnotation song={this.props.song} /></div>
           </div>
         </div>
