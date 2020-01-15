@@ -7,13 +7,40 @@ class SongPageAnnotation extends React.Component {
 
   }
 
+
+  renderCurrentAnnotation() {
+
+    if (this.props.activeAnnotationId === -1) {
+      return (
+        <p className="song-page-annotation-about">
+          {this.props.song.about}
+        </p>
+      )
+    } 
+    return (
+      <div className="annotation">
+        <p className="song-page-annotation-about">
+          {this.props.annotations[this.props.activeAnnotationId].body}
+        </p>
+      </div>
+    )
+
+  }
+
   render() {
+
+      if(this.props.annotations === undefined) {
+        return null;
+      }
 
       return (
       
-      <div>
+      <div className="song-page-annotation-wrapper">
+
         <p className="song-page-annotation-title">ABOUT "{this.props.song.title.toUpperCase()}"</p>
-        <p className="song-page-annotation-about">{this.props.song.about}</p>
+        
+        {this.renderCurrentAnnotation()}
+
       </div>
       )
     

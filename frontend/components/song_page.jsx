@@ -8,10 +8,24 @@ class SongPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activeAnnotationId: -1,
+    }
+
+    this.setCurrAnnotation = this.setCurrAnnotation.bind(this);
+
   }
   componentDidMount() {
-    this.props.fetchSong(this.props.match.params.songId);
-    this.props.fetchReferents(this.props.match.params.songId);
+
+    const fetchSong = this.props.fetchSong(this.props.match.params.songId);
+    const fetchRefs = this.props.fetchReferents(this.props.match.params.songId);
+    const fetchAnnots = this.props.fetchAnnotations(this.props.match.params.songId);
+
+    Promise.all( [fetchSong, fetchRefs, fetchAnnots]);
+  }
+
+  setCurrAnnotation(id) {
+    this.setState({ activeAnnotationId: id }/* , () => console.log(this.state.activeAnnotationId) */);
   }
 
   render() {
@@ -20,7 +34,7 @@ class SongPage extends React.Component {
       return null;
     }
 
-    let { song, referents, createReferent } = this.props;
+    let { song, referents, createReferent, createAnnotation, deleteAnnotation } = this.props;
 
     return (
       <div className="song-page">
@@ -29,16 +43,25 @@ class SongPage extends React.Component {
         
         <div className="song-page-detail">
           <div className="song-page-detail-wrapper">
-            <div><SongPageLyrics 
-                  song={song} 
-                  lyrics={song.body} 
-                  referents={referents} 
-                  createReferent={createReferent} />
+            <div>
+              <SongPageLyrics 
+                song={song} 
+                lyrics={song.body} 
+                referents={referents} 
+                createReferent={createReferent}
+                setCurrAnnotation={this.setCurrAnnotation} />
             </div>
-            <div className="song-page-detail-annotation"><SongPageAnnotation song={this.props.song} /></div>
+            <div className="song-page-detail-annotation">
+              <SongPageAnnotation 
+                song={this.props.song}
+                annotations={this.props.annotations}
+                createAnnotation={createAnnotation}
+                deleteAnnotation={deleteAnnotation}
+                activeAnnotationId={this.state.activeAnnotationId}
+                />
+            </div>
           </div>
         </div>
-
       </div>
     )
   }

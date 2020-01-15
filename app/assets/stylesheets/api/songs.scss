@@ -128,6 +128,10 @@ p.song-page-lyrics-title, .song-page-annotation-title {
 .referent:hover span {
 
   cursor: pointer;
-  background-color: yellow;
+  background-color: #FFFF64;
 
+}
+
+.active span {
+  background-color: #FFFF64;
 }
