@@ -10,8 +10,9 @@ class SongPage extends React.Component {
 
     this.state = {
       activeAnnotationId: -1,
+      annotationSizzle: '',
     }
-
+    this.songPageLyricsRef = React.createRef();
     this.setCurrAnnotation = this.setCurrAnnotation.bind(this);
 
   }
@@ -24,8 +25,12 @@ class SongPage extends React.Component {
     Promise.all( [fetchSong, fetchRefs, fetchAnnots]);
   }
 
-  setCurrAnnotation(id) {
-    this.setState({ activeAnnotationId: id }/* , () => console.log(this.state.activeAnnotationId) */);
+  setCurrAnnotation(id, sizzleText) {
+
+    console.log(sizzleText);
+
+    this.setState({ activeAnnotationId: id, annotationSizzle: sizzleText });
+  
   }
 
   render() {
@@ -41,10 +46,11 @@ class SongPage extends React.Component {
         
         <SongPageHeader song={this.props.song}/>
         
-        <div className="song-page-detail">
+        <div onClick={(e) => this.songPageLyricsRef.current.resetActiveRegion(e)} className="song-page-detail">
           <div className="song-page-detail-wrapper">
             <div>
               <SongPageLyrics 
+                ref={this.songPageLyricsRef}
                 song={song} 
                 lyrics={song.body} 
                 referents={referents} 
@@ -55,6 +61,7 @@ class SongPage extends React.Component {
               <SongPageAnnotation 
                 song={this.props.song}
                 annotations={this.props.annotations}
+                annotationSizzle={this.state.annotationSizzle}
                 createAnnotation={createAnnotation}
                 deleteAnnotation={deleteAnnotation}
                 activeAnnotationId={this.state.activeAnnotationId}

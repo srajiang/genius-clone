@@ -1,3 +1,35 @@
 // Place all the styles related to the api/referents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Song Lyrics styles */
+
+// .song-page-lyrics p {
+//   display: inline-block;
+// }
+
+.referent span {
+
+  background-color: #e9e9e9;
+  transition: all .15s linear;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 1px;
+  padding-right: 1px;
+
+}
+
+.referent:hover span {
+
+  cursor: pointer;
+  background-color: #FFFF64;
+
+}
+
+// .active span {
+//   background-color: #FFFF64;
+// }
+
+span.active-temp{
+  background-color: #FFFF64;
+}

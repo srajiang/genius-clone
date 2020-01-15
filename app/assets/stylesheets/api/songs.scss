@@ -104,34 +104,10 @@ p.song-page-lyrics-title, .song-page-annotation-title {
   padding-bottom: 30px;
 }
 
-.song-page-annotation-about {
+.song-page-annotation {
   line-height: 1.5em;
 }
 
-/* Song Lyrics styles */
-
-// .song-page-lyrics p {
-//   display: inline-block;
-// }
-
-.referent span {
-
-  background-color: #e9e9e9;
-  transition: all .15s linear;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 1px;
-  padding-right: 1px;
-
-}
-
-.referent:hover span {
-
-  cursor: pointer;
-  background-color: #FFFF64;
-
-}
-
-.active span {
-  background-color: #FFFF64;
+p.active {
+  background-color: yellow;
 }

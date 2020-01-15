@@ -12,14 +12,87 @@ class SongPageLyrics extends React.Component {
 
     this.reconcileReferentsToLyrics = this.reconcileReferentsToLyrics.bind(this);
     this.setCurrReferent = this.setCurrReferent.bind(this);
+    this.setActiveRegion = this.setActiveRegion.bind(this);
   }
+
+
+
+  setActiveRegion(e) {
+
+    /* get selection particulars */
+    let selection = window.getSelection();
+  
+    // console.log(selection);
+
+    let startEleId = selection.anchorNode.parentNode.id;
+    let endEleId = selection.focusNode.parentNode.id;
+
+    // console.log(startEleId);
+    // console.log(endEleId);
+
+    if (startEleId === "" || endEleId === "") {
+      return;
+    }
+
+    startEleId = parseInt(startEleId);
+    endEleId = parseInt(endEleId);
+
+    // console.log(startEleId);
+    // console.log(endEleId);
+
+    /* swap start and end if start is greater than end */
+    if (startEleId > endEleId) {
+      [ startEleId, endEleId ] = [ endEleId, startEleId]
+    }
+
+    /* get range of lines from start to end */
+    let range = _.range(startEleId, endEleId + 1);
+    console.log(range)
+
+    /* grab nodes corresponding to start and end and modify their class to be highlighted */
+    for (let id of range) {
+      document.getElementById(id).children[0].classList.add('active-temp');
+    }
+
+    // console.log(nodeElems);
+  }
+
+  resetActiveRegion(e) {
+
+    console.log('function');
+    console.log(e.currentTarget)
+    console.log(e.target);
+    let currActive;
+
+    if( e.currentTarget === e.target) {
+    
+      console.log('if statement');
+      currActive = document.querySelectorAll('.active-temp');
+
+      console.log(currActive);
+
+      for (let i = 0; i < currActive.length; i++) {
+        console.log('looping', i);
+        currActive[i].classList.remove('active-temp');
+
+      }
+
+      // for (let ele of currActive) {
+      //   console.log(ele);
+      // }
+    }
+
+  }
+
 
   setCurrReferent(e) {
 
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
     this.setState({ activeReferentId: refId });
+
     let annotationIds = this.props.referents[refId].annotationIds[0];
-    this.props.setCurrAnnotation(annotationIds);
+
+    this.props.setCurrAnnotation(annotationIds, e.target.innerText);
 
   }
 
@@ -61,16 +134,25 @@ class SongPageLyrics extends React.Component {
 
           reconciledLyrics.push(
             <div key={Math.random() * 100000000}>
+              
               <br></br>
-              <p key={i} >{lyrics[i]}</p>
+              
+              <p id={i} key={i} >
+                <span onMouseUp={this.setActiveRegion} id={i}>{lyrics[i]}</span>
+              </p>
+
             </div>
           )
-          
+
           i++;
           
         } else {
 
-          reconciledLyrics.push( <p key={i} > {lyrics[i]}</p> ) /* lyric is not a header */
+          reconciledLyrics.push(
+            <p id={i} key={i} >
+              <span onMouseUp={this.setActiveRegion} id={i}>{lyrics[i]}</span>
+            </p> 
+          ) /* lyric is not a header */
           
           i++;
         }
@@ -92,7 +174,7 @@ class SongPageLyrics extends React.Component {
             refid={referentStartEndHash[i][1]} 
             key={Math.random() * 100000000} className={`referent ${active}`}>
 
-              {slice.map((lyric, idx) => <p key={i + idx} ><span>{lyric}</span></p>)}
+            {slice.map((lyric, idx) => <p id={i} key={i + idx} ><span onMouseUp={this.setActiveRegion} id={i}>{lyric}</span></p>)}
               
           </div>
         )
@@ -125,16 +207,15 @@ class SongPageLyrics extends React.Component {
 
     return (
       <div className="song-page-lyrics">
+
         <p className="song-page-lyrics-title">{song.title.toUpperCase()} LYRICS</p>
 
         {this.reconcileReferentsToLyrics(lyrics)}
 
       </div>
     )
-
   }
   
-
 }
 
 export default SongPageLyrics;
