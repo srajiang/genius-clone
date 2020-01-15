@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => {
 
   return ({
     song: state.entities.songs[ownProps.match.params.songId],
-    referents: Object.values(state.entities.referents)
+    referents: state.entities.referents,
+    annotations: state.entities.annotations
   })
 }
 

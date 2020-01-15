@@ -6,30 +6,45 @@ class SongPageLyrics extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      activeReferentId: -1,
+    }
+
     this.reconcileReferentsToLyrics = this.reconcileReferentsToLyrics.bind(this);
+    this.setCurrReferent = this.setCurrReferent.bind(this);
   }
+
+  setCurrReferent(e) {
+
+    let refId = parseInt(e.currentTarget.getAttribute('refid'));
+    this.setState({ activeReferentId: refId });
+    let annotationIds = this.props.referents[refId].annotationIds[0];
+    this.props.setCurrAnnotation(annotationIds);
+
+  }
+
 
   reconcileReferentsToLyrics(lyrics) {
 
     let referentStartEndHash = {};
     let referentAllLinesSet = new Set();
 
+
+    let ref_keys = Object.keys(this.props.referents);
+
     /* loops through the referent data and parses */
-    for (let referent of this.props.referents) {
 
-      console.log(referent);
-      console.log('start', referent.fragment_range_start);
-      console.log('end', referent.fragment_range_end);
 
-      let tempRange = _.range(referent.fragment_range_start, referent.fragment_range_end);
+    for ( let ref_key of ref_keys ) {
+
+      let referent = this.props.referents[ref_key];
+
+      let tempRange = _.range(referent.fragmentRangeStart, referent.fragmentRangeEnd);
       tempRange.forEach( (ele) => referentAllLinesSet.add(ele));
 
-      referentStartEndHash[referent.fragment_range_start] = referent.fragment_range_end;
-      console.log(referentStartEndHash);
+      referentStartEndHash[referent.fragmentRangeStart] = [referent.fragmentRangeEnd, referent.id];
+      
     }
-    
-    console.log('referentStartEndHash', referentStartEndHash);
-    console.log('referentAllLinesSet:', referentAllLinesSet);
 
     let reconciledLyrics = [];
 
@@ -38,17 +53,14 @@ class SongPageLyrics extends React.Component {
     let i = 0;
 
     while (i < lyrics.length) {
-      // console.log('i', i);
 
       if (!referentAllLinesSet.has(i)) {  /* lyric is not part of a referent */
         
-        // console.log('not referent');
-        // console.log(lyrics[i].includes('['));
 
         if (lyrics[i][0] === "[") {  /* lyric is a header */
 
           reconciledLyrics.push(
-            <div key={i}>
+            <div key={Math.random() * 100000000}>
               <br></br>
               <p key={i} >{lyrics[i]}</p>
             </div>
@@ -65,32 +77,33 @@ class SongPageLyrics extends React.Component {
 
       } else { /* lyric line IS part of a referent  */
 
-        // console.log('start', i);
-        // console.log('end', referentStartEndHash[i]);
 
         // take the key val pair for fragment start and end and use it to slice the lyrics
-        let slice = lyrics.slice(i, referentStartEndHash[i]);
+        let slice = lyrics.slice(i, referentStartEndHash[i][0]);
+        
+        //take sliced song lines and push to reconciledLyrics as a nested JS element
+        
+        let active = (referentStartEndHash[i][1] === this.state.activeReferentId) ? "active": "";
 
-        // console.log('slice', slice);
+        reconciledLyrics.push(
+          
+          <div 
+            onClick={this.setCurrReferent} 
+            refid={referentStartEndHash[i][1]} 
+            key={Math.random() * 100000000} className={`referent ${active}`}>
 
+              {slice.map((lyric, idx) => <p key={i + idx} ><span>{lyric}</span></p>)}
+              
+          </div>
+        )
+        
         let oldStart = i;
 
         //reset i to the end of the song referent range to continue reading the lyrics 
-        i = referentStartEndHash[i]; 
-
-        // console.log("newI", i);
-        
+        i = referentStartEndHash[i][0]; 
+  
         // remove the key val pair from referentStartEndHash
         delete referentStartEndHash[oldStart];
-
-        //take sliced song lines and push to reconciledLyrics as a nested JS element
-
-        reconciledLyrics.push(
-
-          <div className="referent">
-            {slice.map((lyric, idx) => <p key={idx} ><span>{lyric}</span></p>)}
-          </div>
-        )
 
       }
 
@@ -98,18 +111,11 @@ class SongPageLyrics extends React.Component {
 
     return reconciledLyrics;
 
-    //loop through the lyrics
-      //if the line is included 
-
-    //2d array to store the lyrics
-    //get all the referent start and ends
-
-    //loop through all of the lyrics in the body
-    //if there's a referent that starts at that line
-      //push the line into a 
+  
   }
 
   render() {
+
 
     let { song, lyrics, referents } = this.props;
 
@@ -120,24 +126,6 @@ class SongPageLyrics extends React.Component {
     return (
       <div className="song-page-lyrics">
         <p className="song-page-lyrics-title">{song.title.toUpperCase()} LYRICS</p>
-
-        {/* {lyrics.map((line, idx) => {
-
-          if (line[0] === "[") {
-
-            return (
-              <div key={idx}>
-                <br></br>
-                <p key={idx} >{line}</p>
-              </div>)
-
-          } else {
-
-            return <p key={idx} > {line}</p>
-          }
-        })
-
-        } */}
 
         {this.reconcileReferentsToLyrics(lyrics)}
 

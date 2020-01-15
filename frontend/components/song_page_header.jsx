@@ -5,7 +5,7 @@ const SongPageHeader = (props) => {
   return (
 
     <div 
-      style={{ backgroundImage: "url(" + props.song.image_url + ")" }}
+      style={{ backgroundImage: "url(" + props.song.imageUrl + ")" }}
       className="song-page-header"
     >
       
@@ -13,7 +13,7 @@ const SongPageHeader = (props) => {
 
       <div className="song-page-header-content">
       
-        <div className="album-cover"><img src={props.song.image_url} /></div>
+        <div className="album-cover"><img src={props.song.imageUrl} /></div>
 
         <div className="song-page-header-detail">
           <h2>{props.song.title}</h2>
