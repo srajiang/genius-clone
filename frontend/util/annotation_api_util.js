@@ -29,3 +29,15 @@ export const deleteAnnotation = annotationId => {
   })
 
 }
+
+export const updateAnnotation = annotation => {
+
+  $.ajax({
+
+    method: "PATCH",
+    url: `api/annotations/${annotation.id}`,
+    data: { annotation: annotation }
+
+  })
+
+}

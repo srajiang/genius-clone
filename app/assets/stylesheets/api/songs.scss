@@ -96,11 +96,6 @@ p.song-page-lyrics-title, .song-page-annotation-title {
   letter-spacing: .08em;
 }
 
-
-.song-page-detail-annotation {
-  max-width: 40%;
-}
-
 .song-page-annotation-title {
 
   padding-bottom: 30px;
@@ -112,4 +107,8 @@ p.song-page-lyrics-title, .song-page-annotation-title {
 
 p.active {
   background-color: yellow;
+}
+
+.song-page-about {
+  margin-right: 5vw;
 }

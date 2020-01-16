@@ -96,8 +96,6 @@ class SongPageLyrics extends React.Component {
     let ref_keys = Object.keys(this.props.referents);
 
     /* loops through the referent data and parses */
-
-
     for ( let ref_key of ref_keys ) {
 
       let referent = this.props.referents[ref_key];
@@ -154,7 +152,6 @@ class SongPageLyrics extends React.Component {
         let slice = lyrics.slice(i, referentStartEndHash[i][0]);
         
         //take sliced song lines and push to reconciledLyrics as a nested JS element
-        
         let active = (referentStartEndHash[i][1] === this.state.activeReferentId) ? "active": "";
 
         reconciledLyrics.push(
@@ -187,8 +184,6 @@ class SongPageLyrics extends React.Component {
   }
 
   render() {
-
-
     let { song, lyrics, referents } = this.props;
 
     if ( referents === undefined ) {

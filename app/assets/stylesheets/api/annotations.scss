@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .song-page-detail-annotation {
-  min-width: 40%;
-
+  min-width: 50%;
+  max-width: 50%;
   position: relative;
-  width: 400px;
+  
 }
 
 .song-page-annotation-title {
@@ -24,11 +24,12 @@
   background-color: white;
   padding: 30px;
   padding-top: 20px;
+  padding-bottom: 50px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
   position: fixed;
   top: 48vh;
-  width: 30vw;
-
+  width: 40vw;
+  font-weight: lighter;
 }
 
 .sizzle {
@@ -37,14 +38,14 @@
   line-height: 1em;
   margin-bottom: 30px;
   margin-top: 30px;
-  margin-left: 20px;
+  margin-left: 25px;
   position: relative;
 
 }
 
 .icon {
   top: -20px;
-  left: -20px;
+  left: -25px;
   font-size: 20px;
   color: #99a7ee;
   position: absolute;
@@ -78,19 +79,68 @@
 
 .annotation-edit-button {
 
-
   cursor: pointer;
 
   color: #99a7ee;
   transform: all .3s ease;
   padding-top: 15px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: lighter;
   border-bottom: 2px solid white;
+}
+
+.annotation-edit-form {
+
+  position: relative;
+
 }
 
 .annotation-edit-button:hover {
 
   border-bottom: 2px solid #99a7ee;
 
+}
+
+.annotation-edit-field {
+
+  line-height: 1.5em;
+  font-size: 16px;
+  border: none;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  font-weight: lighter;
+  // border: 1px solid #99a7ee;
+
+}
+
+.annotation-edit-field:focus {
+
+  outline-color: #99a7ee;
+  outline-width: thin;
+
+}
+
+.annotation-edit-submit {
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  color:#99a7ee;
+  font-size: 15px;
+  
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  
+  cursor: pointer;
+  transition: all .3s ease;
+
+  font-weight: lighter;
+  
+  padding: none;
+  padding-bottom: 3px;
+}
+
+.annotation-edit-submit:hover {
+  border-bottom: 2px solid #99a7ee;
 }

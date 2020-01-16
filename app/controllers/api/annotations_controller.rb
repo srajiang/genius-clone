@@ -16,6 +16,23 @@ class Api::AnnotationsController < ApplicationController
 
   end
 
+  def update
+    @annotation = Annotation.find_by(id: params[:id])
+
+    if !@annotation.nil?
+
+      if @annotation.update(annotation_params)
+        render :show
+      else
+        render json: @annotation.errors.full_messages, status: 422
+      end
+
+    else 
+      render json: ["Annotation not found"], status: 422
+    end 
+
+  end
+
   def destroy
     @annotation = Annotation.find_by(id: params[:id])
     if !@annotation.nil?
@@ -24,6 +41,7 @@ class Api::AnnotationsController < ApplicationController
 
     render json: ["null"]
   end
+
 
   def annotation_params
     params.require(:annotation).permit(:body, :referent_id, :annotator_id)
