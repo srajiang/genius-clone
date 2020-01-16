@@ -43,7 +43,7 @@ export const fetchAnnotations = songId => dispatch => AnnotationAPIUtil.fetchAnn
 
 export const createAnnotation = annotation => dispatch => AnnotationAPIUtil.createAnnotation(annotation)
   .then(
-    annotation => dispatch(receiveAnnotation(annotaqtion)),
+    annotation => dispatch(receiveAnnotation(annotation)),
     response => dispatch(receiveAnnotationErrors(response.responseJSON))
   );
 
@@ -52,4 +52,4 @@ export const deleteAnnotation = annotationId => dispatch => AnnotationAPIUtil.de
 
 
 export const updateAnnotation = annotation => dispatch => AnnotationAPIUtil.updateAnnotation(annotation)
-  .then( (annotation) => dispatch(receiveAnnotation(annotation)));
+  .then( (annotation)=> dispatch(receiveAnnotation(annotation)));

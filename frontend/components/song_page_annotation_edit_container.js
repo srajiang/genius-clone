@@ -1,4 +1,4 @@
-import { connect } from 'react';
+import { connect } from 'react-redux';
 import { updateAnnotation } from '../actions/annotation_actions';
 import SongPageAnnotationForm from './song_page_annotation_form';
 
@@ -15,4 +15,4 @@ const mDTP = (dispatch) => ({
 
 })
 
-// export default connect(mSTP, mDTP)(SongPageAnnotationForm);
+export default connect(mSTP, mDTP)(SongPageAnnotationForm);
