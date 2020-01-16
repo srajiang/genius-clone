@@ -19,3 +19,14 @@ export const createReferent = referent => {
 
   })
 }
+
+export const deleteReferent = referentId => {
+
+  $.ajax({
+
+    method: "DELETE",
+    url: `api/referents/${referentId}`
+
+  })
+
+}

@@ -1,39 +1,67 @@
 import React from 'react';
 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+
+import SongPageAnnotationDetail from './song_page_annotation_detail';
+
 class SongPageAnnotation extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
-
   renderCurrentAnnotation() {
-
-    if (this.props.activeAnnotationId === -1) {
+    
+    if (this.props.activeAnnotationId === -1 && this.props.annotationFormActive === false) {  /* no active annotation or annotationForm*/
       return (
-        <p className="song-page-annotation-about">
+        <p className="song-page-about">
           {this.props.song.about}
         </p>
       )
-    } 
-    return (
-      <div className="annotation">
-        <p className="song-page-annotation-about">
-          {this.props.annotations[this.props.activeAnnotationId].body}
-        </p>
-      </div>
+    }
+
+    return (  /* render form or annotation */
+
+      // <div className="annotation">
+
+      //   <div className="song-page-annotation">
+      //     <div className="header"><p>GENIUS ANNOTATION</p></div>
+
+      //     <div className = "sizzle">
+
+      //       <FontAwesomeIcon className="icon" icon={faQuoteLeft} />
+      //       {this.props.annotationSizzle + annotationSizzleEnd}
+
+      //     </div>
+
+      //     {this.props.annotations[this.props.activeAnnotationId].body}
+
+      //     <p className="annotation-author">AuthorPlaceholder</p>
+
+      //   </div>
+      // </div>
+
+      <SongPageAnnotationDetail
+
+        annotations={this.props.annotations}
+        activeAnnotationId={this.props.activeAnnotationId}
+        annotationFormActive={this.props.annotationFormActive}
+        annotationSizzle={this.props.annotationSizzle}
+  
+       />
+
     )
 
   }
 
   render() {
 
-      if(this.props.annotations === undefined) {
-        return null;
-      }
+    if(this.props.annotations === undefined) {
+      return null;
+    }
 
-      return (
+    return (
       
       <div className="song-page-annotation-wrapper">
 

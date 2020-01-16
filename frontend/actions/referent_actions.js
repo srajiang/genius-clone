@@ -2,7 +2,8 @@ import * as ReferentAPIUtil from '../util/referents_api_util';
 
 export const RECEIVE_REFERENTS = "RECEIVE_REFERENTS";
 export const RECEIVE_REFERENT = "RECEIVE_REFERENT";
-export const RECEIVE_REFERENT_ERRORS = "RECEIVE_REFERENT_ERRORS"
+export const RECEIVE_REFERENT_ERRORS = "RECEIVE_REFERENT_ERRORS";
+export const REMOVE_REFERENT = "REMOVE_REFERENT";
 
 /* action creators */
 
@@ -36,7 +37,20 @@ export const receiveReferentErrors = errors => {
   )
 }
 
+export const removeReferent = referentId => {
+  
+  return (
+
+    {
+      type: REMOVE_REFERENT,
+      referentId
+    }
+
+  )
+}
+
 /* thunk action creators */
+
 export const createReferent = referent => dispatch => ReferentAPIUtil.createReferent(referent)
   .then(
     referent => dispatch(receiveReferent(referent)),
@@ -49,3 +63,9 @@ export const fetchReferents = songId => dispatch => ReferentAPIUtil.fetchReferen
     response => dispatch(receiveReferentErrors(response.responseJSON))
   )
 
+export const deleteReferent = referentId => dispatch => ReferentAPIUtil.deleteReferent(referentId)
+  .then( 
+    () => dispatch(removeReferent(referentId)
+  )
+    
+  )

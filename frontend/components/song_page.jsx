@@ -9,12 +9,17 @@ class SongPage extends React.Component {
     super(props);
 
     this.state = {
+      
       activeAnnotationId: -1,
+      annotationSizzle: '',
+      annotationFormActive: false
     }
 
-    this.setCurrAnnotation = this.setCurrAnnotation.bind(this);
+    this.songPageLyricsRef = React.createRef();
+    this.setCurrAnnotationStatus = this.setCurrAnnotationStatus.bind(this);
 
   }
+
   componentDidMount() {
 
     const fetchSong = this.props.fetchSong(this.props.match.params.songId);
@@ -22,10 +27,18 @@ class SongPage extends React.Component {
     const fetchAnnots = this.props.fetchAnnotations(this.props.match.params.songId);
 
     Promise.all( [fetchSong, fetchRefs, fetchAnnots]);
+  
   }
 
-  setCurrAnnotation(id) {
-    this.setState({ activeAnnotationId: id }/* , () => console.log(this.state.activeAnnotationId) */);
+  setCurrAnnotationStatus(id, sizzleText, formActive) {
+
+    this.setState({ 
+      activeAnnotationId: id, 
+      annotationSizzle: sizzleText, 
+      annotationFormActive: formActive
+
+    });
+    
   }
 
   render() {
@@ -41,15 +54,16 @@ class SongPage extends React.Component {
         
         <SongPageHeader song={this.props.song}/>
         
-        <div className="song-page-detail">
+        <div onClick={(e) => this.songPageLyricsRef.current.resetActiveRegion(e)} className="song-page-detail">
           <div className="song-page-detail-wrapper">
             <div>
               <SongPageLyrics 
+                ref={this.songPageLyricsRef}
                 song={song} 
                 lyrics={song.body} 
                 referents={referents} 
                 createReferent={createReferent}
-                setCurrAnnotation={this.setCurrAnnotation} />
+                setCurrAnnotationStatus={this.setCurrAnnotationStatus} />
             </div>
             <div className="song-page-detail-annotation">
               <SongPageAnnotation 
@@ -58,6 +72,8 @@ class SongPage extends React.Component {
                 createAnnotation={createAnnotation}
                 deleteAnnotation={deleteAnnotation}
                 activeAnnotationId={this.state.activeAnnotationId}
+                annotationSizzle={this.state.annotationSizzle}
+                annotationFormActive={this.state.annotationFormActive}
                 />
             </div>
           </div>

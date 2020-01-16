@@ -19,6 +19,19 @@ class Api::ReferentsController < ApplicationController
     end
   end
 
+  def destroy
+  
+    @referent = Referent.find_by(id: params[:referentId])
+    
+    if !@referent.nil?
+      @referent.destroy
+      render json: ['null']
+    else
+      render json: ['No referent by that id found', params[:referentId]], status: 422
+    end
+  
+  end
+
   private
   def referent_params
     params.require(:referent).permit(:fragment_range_start, :fragment_range_end, :song_id)
