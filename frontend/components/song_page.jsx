@@ -9,13 +9,17 @@ class SongPage extends React.Component {
     super(props);
 
     this.state = {
+      
       activeAnnotationId: -1,
       annotationSizzle: '',
+      annotationFormActive: false
     }
+
     this.songPageLyricsRef = React.createRef();
-    this.setCurrAnnotation = this.setCurrAnnotation.bind(this);
+    this.setCurrAnnotationStatus = this.setCurrAnnotationStatus.bind(this);
 
   }
+
   componentDidMount() {
 
     const fetchSong = this.props.fetchSong(this.props.match.params.songId);
@@ -23,14 +27,18 @@ class SongPage extends React.Component {
     const fetchAnnots = this.props.fetchAnnotations(this.props.match.params.songId);
 
     Promise.all( [fetchSong, fetchRefs, fetchAnnots]);
+  
   }
 
-  setCurrAnnotation(id, sizzleText) {
+  setCurrAnnotationStatus(id, sizzleText, formActive) {
 
-    console.log(sizzleText);
+    this.setState({ 
+      activeAnnotationId: id, 
+      annotationSizzle: sizzleText, 
+      annotationFormActive: formActive
 
-    this.setState({ activeAnnotationId: id, annotationSizzle: sizzleText });
-  
+    });
+    
   }
 
   render() {
@@ -55,16 +63,17 @@ class SongPage extends React.Component {
                 lyrics={song.body} 
                 referents={referents} 
                 createReferent={createReferent}
-                setCurrAnnotation={this.setCurrAnnotation} />
+                setCurrAnnotationStatus={this.setCurrAnnotationStatus} />
             </div>
             <div className="song-page-detail-annotation">
               <SongPageAnnotation 
                 song={this.props.song}
                 annotations={this.props.annotations}
-                annotationSizzle={this.state.annotationSizzle}
                 createAnnotation={createAnnotation}
                 deleteAnnotation={deleteAnnotation}
                 activeAnnotationId={this.state.activeAnnotationId}
+                annotationSizzle={this.state.annotationSizzle}
+                annotationFormActive={this.state.annotationFormActive}
                 />
             </div>
           </div>

@@ -19,11 +19,12 @@ class SongPageLyrics extends React.Component {
 
   setActiveRegion(e) {
 
+    console.log('setting active region');
+
     /* get selection particulars */
     let selection = window.getSelection();
   
-    // console.log(selection);
-
+    
     let startEleId = selection.anchorNode.parentNode.id;
     let endEleId = selection.focusNode.parentNode.id;
 
@@ -47,39 +48,37 @@ class SongPageLyrics extends React.Component {
 
     /* get range of lines from start to end */
     let range = _.range(startEleId, endEleId + 1);
-    console.log(range)
+    // console.log(range)
 
     /* grab nodes corresponding to start and end and modify their class to be highlighted */
+    let sizzle = "";
+
     for (let id of range) {
       document.getElementById(id).children[0].classList.add('active-temp');
+      sizzle.concat(document.getElementById(id).children[0].innerText, "\n");
     }
 
-    // console.log(nodeElems);
+    /* set the current annotation to -1 */
+    this.props.setCurrAnnotationStatus(-1, sizzle, true);
+ 
   }
 
   resetActiveRegion(e) {
 
-    console.log('function');
-    console.log(e.currentTarget)
-    console.log(e.target);
+    console.log('reset active region')
+
     let currActive;
 
     if( e.currentTarget === e.target) {
     
-      console.log('if statement');
       currActive = document.querySelectorAll('.active-temp');
 
-      console.log(currActive);
 
       for (let i = 0; i < currActive.length; i++) {
-        console.log('looping', i);
         currActive[i].classList.remove('active-temp');
-
       }
-
-      // for (let ele of currActive) {
-      //   console.log(ele);
-      // }
+      
+      this.props.setCurrAnnotationStatus(-1, "", false);
     }
 
   }
@@ -87,12 +86,14 @@ class SongPageLyrics extends React.Component {
 
   setCurrReferent(e) {
 
+    console.log('setting current referent')
+    
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
     this.setState({ activeReferentId: refId });
 
     let annotationIds = this.props.referents[refId].annotationIds[0];
 
-    this.props.setCurrAnnotation(annotationIds, e.target.innerText);
+    this.props.setCurrAnnotationStatus(annotationIds, e.target.innerText, false);
 
   }
 
@@ -174,7 +175,7 @@ class SongPageLyrics extends React.Component {
             refid={referentStartEndHash[i][1]} 
             key={Math.random() * 100000000} className={`referent ${active}`}>
 
-            {slice.map((lyric, idx) => <p id={i} key={i + idx} ><span onMouseUp={this.setActiveRegion} id={i}>{lyric}</span></p>)}
+            {slice.map((lyric, idx) => <p id={i} key={i + idx} ><span id={i}>{lyric}</span></p>)}
               
           </div>
         )

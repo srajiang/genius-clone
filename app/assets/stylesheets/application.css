@@ -77,7 +77,7 @@ body {
 
 ::selection {
     color: none;
-    background: none;
+    background: #FFFF64;
 }
 /* For Mozilla Firefox */
 ::-moz-selection {
