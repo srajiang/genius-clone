@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => {
   return ({
     song: state.entities.songs[ownProps.match.params.songId],
     referents: state.entities.referents,
-    annotations: state.entities.annotations
+    annotations: state.entities.annotations,
+    currentUserId: state.session.session.currentUserId  /* FIX: Relook at Session Reducer to find out why nesting */
   })
 }
 

@@ -50,3 +50,6 @@ export const createAnnotation = annotation => dispatch => AnnotationAPIUtil.crea
 export const deleteAnnotation = annotationId => dispatch => AnnotationAPIUtil.deleteAnnotation(annotationId)
   .then( () => dispatch(removeAnnotation(annotationId) ));
 
+
+export const updateAnnotation = annotation => dispatch => AnnotationAPIUtil.updateAnnotation(annotation)
+  .then( (annotation) => dispatch(receiveAnnotation(annotation)));
