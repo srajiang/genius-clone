@@ -23,6 +23,7 @@
   border-left: 3px solid #99A7EE;
   background-color: white;
   padding: 30px;
+  padding-top: 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
   position: fixed;
   top: 48vh;
@@ -34,10 +35,11 @@
   font-size: 25px;
   font-weight: lighter;
   line-height: 1em;
-  margin-bottom: 25px;
-  margin-top: 25px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   margin-left: 20px;
   position: relative;
+
 }
 
 .icon {
@@ -48,16 +50,47 @@
   position: absolute;
 }
 
-.annotation-author {
-  margin-top: 20px;
-  font-size: 12px;
-  margin-bottom: 20px;
+.annotation-emphasis {
+  
+  color: #99a7ee;
+  font-weight: bold;
 
 }
 
+
 .header {
   color: #9A9A9A;
-  font-size: 12px;
-  padding-bottom: 15px;
+  font-size: 14px;
   letter-spacing: .08em;
+}
+
+.annotation-detail {
+
+  // margin-top: 20px;
+  // font-size: 12px;
+  // margin-bottom: 20px;
+
+  font-size: 10px;
+  padding-bottom: 10px;
+  display: flex;
+
+}
+
+.annotation-edit-button {
+
+
+  cursor: pointer;
+
+  color: #99a7ee;
+  transform: all .3s ease;
+  padding-top: 15px;
+  font-size: 14px;
+  font-weight: lighter;
+  border-bottom: 2px solid white;
+}
+
+.annotation-edit-button:hover {
+
+  border-bottom: 2px solid #99a7ee;
+
 }

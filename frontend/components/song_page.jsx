@@ -54,7 +54,7 @@ class SongPage extends React.Component {
         
         <SongPageHeader song={this.props.song}/>
         
-        <div onClick={(e) => this.songPageLyricsRef.current.resetActiveRegion(e)} className="song-page-detail">
+        <div onClick={(e) => this.songPageLyricsRef.current.resetActiveRegionOnClick(e)} className="song-page-detail">
           <div className="song-page-detail-wrapper">
             <div>
               <SongPageLyrics 

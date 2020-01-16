@@ -23,25 +23,6 @@ class SongPageAnnotation extends React.Component {
 
     return (  /* render form or annotation */
 
-      // <div className="annotation">
-
-      //   <div className="song-page-annotation">
-      //     <div className="header"><p>GENIUS ANNOTATION</p></div>
-
-      //     <div className = "sizzle">
-
-      //       <FontAwesomeIcon className="icon" icon={faQuoteLeft} />
-      //       {this.props.annotationSizzle + annotationSizzleEnd}
-
-      //     </div>
-
-      //     {this.props.annotations[this.props.activeAnnotationId].body}
-
-      //     <p className="annotation-author">AuthorPlaceholder</p>
-
-      //   </div>
-      // </div>
-
       <SongPageAnnotationDetail
 
         annotations={this.props.annotations}
