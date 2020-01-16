@@ -8,7 +8,7 @@ export const fetchAnnotations = songId => (
   })
 )
 
-export const createAnnotation = annotation => {
+export const createAnnotation = annotation => (
 
   $.ajax({
 
@@ -17,9 +17,9 @@ export const createAnnotation = annotation => {
     data: { annotation: annotation }
 
   })
-}
+)
 
-export const deleteAnnotation = annotationId => {
+export const deleteAnnotation = annotationId => (
 
   $.ajax({
 
@@ -28,9 +28,9 @@ export const deleteAnnotation = annotationId => {
 
   })
 
-}
+)
 
-export const updateAnnotation = annotation => {
+export const updateAnnotation = annotation => (
 
   $.ajax({
 
@@ -40,4 +40,4 @@ export const updateAnnotation = annotation => {
 
   })
 
-}
+)

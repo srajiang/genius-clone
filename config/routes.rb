@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :songs, except: [:new, :edit]
     resources :referents, only: [:index, :create]
-    resources :annotations, only: [:index, :create, :destroy]
-    
+    resources :annotations, only: [:index, :create, :destroy, :update, :show]
     
   end
 

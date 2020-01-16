@@ -9,7 +9,7 @@ export const fetchReferents = songId => (
 )
 
 
-export const createReferent = referent => {
+export const createReferent = referent => (
 
   $.ajax({
 
@@ -18,9 +18,9 @@ export const createReferent = referent => {
     data: { referent: referent }
 
   })
-}
+)
 
-export const deleteReferent = referentId => {
+export const deleteReferent = referentId => (
 
   $.ajax({
 
@@ -29,4 +29,4 @@ export const deleteReferent = referentId => {
 
   })
 
-}
+)

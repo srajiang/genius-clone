@@ -4,6 +4,10 @@ class Api::AnnotationsController < ApplicationController
     @annotations = Song.find_by(id: params[:songId]).annotations
     render :index
   end
+  
+  def show
+    @annotation = Annotation.find_by(id: params[:id])
+  end
 
   def create
     @annotation = Annotation.new(annotation_params)
@@ -44,7 +48,7 @@ class Api::AnnotationsController < ApplicationController
 
 
   def annotation_params
-    params.require(:annotation).permit(:body, :referent_id, :annotator_id)
+    params.require(:annotation).permit(:body, :referent_id, :annotator_id, :id)
   end
 
 end

@@ -6,10 +6,6 @@ class SongPageLyrics extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      activeReferentId: -1,
-    }
-
     this.reconcileReferentsToLyrics = this.reconcileReferentsToLyrics.bind(this);
     this.setCurrReferent = this.setCurrReferent.bind(this);
     this.setActiveRegion = this.setActiveRegion.bind(this);
@@ -47,7 +43,8 @@ class SongPageLyrics extends React.Component {
 
     for (let id of selectedLinesById) {
       document.getElementById(id).children[0].classList.add('active-temp');
-      selectionText.concat(document.getElementById(id).children[0].innerText, "\n");
+
+      selectionText += document.getElementById(id).children[0].innerText + "\n";
     }
 
     this.props.setCurrAnnotationStatus(-1, selectionText, true); /* set the current annotation to -1 */
@@ -72,17 +69,17 @@ class SongPageLyrics extends React.Component {
     }
   }
 
-
   setCurrReferent(e) {
 
     this.resetActiveRegion();
 
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
-    this.setState({ activeReferentId: refId });
+    
+    this.props.setCurrReferentStatus(refId);
 
-    let annotationIds = this.props.referents[refId].annotationIds[0];
+    let annotationId = this.props.referents[refId].annotationIds[0];
 
-    this.props.setCurrAnnotationStatus(annotationIds, e.target.innerText, false);
+    this.props.setCurrAnnotationStatus(annotationId, e.target.innerText, false);
 
   }
 
@@ -152,7 +149,7 @@ class SongPageLyrics extends React.Component {
         let slice = lyrics.slice(i, referentStartEndHash[i][0]);
         
         //take sliced song lines and push to reconciledLyrics as a nested JS element
-        let active = (referentStartEndHash[i][1] === this.state.activeReferentId) ? "active": "";
+        let active = (referentStartEndHash[i][1] === this.props.activeReferentId) ? "active": "";
 
         reconciledLyrics.push(
           

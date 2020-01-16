@@ -12,12 +12,14 @@ class SongPage extends React.Component {
       
       activeAnnotationId: -1,
       annotationSizzle: '',
-      annotationFormActive: false
+      annotationFormActive: false,
+      activeReferentId: -1
+
     }
 
     this.songPageLyricsRef = React.createRef();
     this.setCurrAnnotationStatus = this.setCurrAnnotationStatus.bind(this);
-
+    this.setCurrReferentStatus = this.setCurrReferentStatus.bind(this);
   }
 
   componentDidMount() {
@@ -37,8 +39,15 @@ class SongPage extends React.Component {
       annotationSizzle: sizzleText, 
       annotationFormActive: formActive
 
-    });
-    
+    }, ()=> console.log(this.state));
+
+  }
+
+  setCurrReferentStatus(id) {
+
+    this.setState({
+      activeReferentId: id
+    })
   }
 
   render() {
@@ -63,6 +72,8 @@ class SongPage extends React.Component {
                 lyrics={song.body} 
                 referents={referents} 
                 createReferent={createReferent}
+                activeReferentId={this.state.activeReferentId}
+                setCurrReferentStatus={this.setCurrReferentStatus}
                 setCurrAnnotationStatus={this.setCurrAnnotationStatus} />
             </div>
             <div className="song-page-detail-annotation">
@@ -74,6 +85,7 @@ class SongPage extends React.Component {
                 activeAnnotationId={this.state.activeAnnotationId}
                 annotationSizzle={this.state.annotationSizzle}
                 annotationFormActive={this.state.annotationFormActive}
+                setCurrReferentStatus={this.setCurrReferentStatus}
                 setCurrAnnotationStatus={this.setCurrAnnotationStatus}
                 currentUserId={this.props.currentUserId}
                 />

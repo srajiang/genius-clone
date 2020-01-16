@@ -64,8 +64,4 @@ export const fetchReferents = songId => dispatch => ReferentAPIUtil.fetchReferen
   )
 
 export const deleteReferent = referentId => dispatch => ReferentAPIUtil.deleteReferent(referentId)
-  .then( 
-    () => dispatch(removeReferent(referentId)
-  )
-    
-  )
+  .then(() => dispatch(removeReferent(referentId)));
