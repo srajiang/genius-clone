@@ -86,6 +86,7 @@ class SongPage extends React.Component {
                 annotationSizzle={this.state.annotationSizzle}
                 annotationFormActive={this.state.annotationFormActive}
                 setCurrReferentStatus={this.setCurrReferentStatus}
+                activeReferentId={this.state.activeReferentId}
                 setCurrAnnotationStatus={this.setCurrAnnotationStatus}
                 currentUserId={this.props.currentUserId}
                 />

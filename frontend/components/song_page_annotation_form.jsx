@@ -22,21 +22,21 @@ class SongPageAnnotationForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleCreateAnnotation = this.handleCreateAnnotation.bind(this);
   }
 
   handleSubmit(e) {
 
     e.preventDefault;
     
-    let annotation = {
-      id: this.props.currAnnotation.id,
-      body: this.state.body,
-      referent_id: this.props.currAnnotation.referentId,
-      annotator_id: this.props.currentUserId
-    }
-
     if (this.props.formType === "Edit") {
 
+      let annotation = {
+        id: this.props.currAnnotation.id,
+        body: this.state.body,
+        referent_id: this.props.currAnnotation.referentId,
+        annotator_id: this.props.currentUserId
+      }
 
       let currSizzle = document.getElementsByClassName('sizzle')[0].innerText
 
@@ -47,10 +47,8 @@ class SongPageAnnotationForm extends React.Component {
 
     if (this.props.formType === "Create") {
 
-      let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
       let activeRegion = document.getElementsByClassName('active-temp');
       
-
       let start = parseInt(activeRegion[0].id);
       let end = parseInt(activeRegion[activeRegion.length -1].id) + 1;
 
@@ -61,9 +59,24 @@ class SongPageAnnotationForm extends React.Component {
       }
 
       this.props.createReferent(referent)
-        .then(() => this.props.setCurrReferentStatus())
-    
+        .then(action => this.handleCreateAnnotation(action.referent))
+      
     }
+
+  }
+
+  handleCreateAnnotation(referent) {
+    let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
+    this.props.setCurrReferentStatus(referent.id);
+
+    let annotation = {
+      body: this.state.body,
+      referent_id: this.props.activeReferentId,
+      annotator_id: this.props.currentUserId
+    }
+
+    this.props.createAnnotation(annotation)
+      .then((action) => this.props.setCurrAnnotationStatus(action.annotation.id, sizzleLyrics, false))
 
   }
   
@@ -115,6 +128,7 @@ class SongPageAnnotationForm extends React.Component {
             autoFocus
             style={{ height: this.props.height }}
             onKeyUp={this.textAreaAdjust}
+            onChange={this.handleUpdate}
             className="annotation-edit-field" type="text"
             placeholder="Start annotating here"
           />

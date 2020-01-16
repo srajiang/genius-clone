@@ -15,7 +15,7 @@ class SongPageAnnotationDetail extends React.Component {
 
     this.state = {
       height: null,
-      currAnnotation: this.props.annotations[this.props.activeAnnotationId]
+      // currAnnotation: this.props.annotations[this.props.activeAnnotationId]
     }
 
     this.updateAnnotation = this.updateAnnotation.bind(this);
@@ -35,7 +35,6 @@ class SongPageAnnotationDetail extends React.Component {
 
     }
 
-
   }
 
   renderAnnotationOrForm() {
@@ -49,7 +48,7 @@ class SongPageAnnotationDetail extends React.Component {
 
           <div className="header"><p>GENIUS ANNOTATION</p></div>
           <div className="annotation-detail">
-            Last updated by&nbsp;<span className="annotation-emphasis">{this.state.currAnnotation.annotator}</span>
+            Last updated by&nbsp;<span className="annotation-emphasis">{this.props.annotations[this.props.activeAnnotationId].annotator}</span>
           </div>
           <div className="sizzle">
 
@@ -77,48 +76,22 @@ class SongPageAnnotationDetail extends React.Component {
 
         <SongPageAnnotationEditContainer
           setCurrAnnotationStatus={this.props.setCurrAnnotationStatus}
-          currAnnotation={this.state.currAnnotation}
+          currAnnotation={this.props.annotations[this.props.activeAnnotationId]}
           annotationSizzle={this.props.annotationSizzle}
           annotationSizzleEnd={annotationSizzleEnd}
           height={this.state.height}
         />
-
-        // <div>
-
-        //   <div className="header"><p>EDIT ANNOTATION</p></div>
-
-        //   <div className="annotation-detail">
-        //     Last updated by&nbsp;<span className="annotation-emphasis">{this.state.currAnnotation.annotator}</span>
-        //   </div>
-
-        //   <div className="sizzle">
-
-        //     <FontAwesomeIcon className="icon" icon={faQuoteLeft} />
-        //     {this.props.annotationSizzle + annotationSizzleEnd}
-
-        //   </div>
-
-        //   <form className="annotation-edit-form" onSubmit={this.handleSubmit} action="">
-        //     <textarea 
-        //       autoFocus
-        //       style={{ height: this.state.height}}
-        //       onKeyUp={this.textAreaAdjust} 
-        //       className="annotation-edit-field" type="text" 
-        //       defaultValue={this.state.currAnnotation.body}
-        //     />
-        //     <input className="annotation-edit-submit" type='submit' value="Submit Edit"></input>
-        //   </form>
-
-        // </div>
       )
     } 
 
     return (
       <SongPageAnnotationCreateContainer
         setCurrAnnotationStatus={this.props.setCurrAnnotationStatus}
-        currAnnotation={this.state.currAnnotation}
+        currAnnotation={this.props.annotations[this.props.activeAnnotationId]}
         annotationSizzle={this.props.annotationSizzle}
         annotationSizzleEnd={annotationSizzleEnd}
+        setCurrReferentStatus={this.props.setCurrReferentStatus}
+        activeReferentId={this.props.activeReferentId}
       />
     )
 
