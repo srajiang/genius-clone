@@ -39,14 +39,14 @@ class SongPage extends React.Component {
       annotationSizzle: sizzleText, 
       annotationFormActive: formActive
 
-    }, ()=> console.log(this.state));
+    });
 
-  }
+  } 
 
   setCurrReferentStatus(id) {
     this.setState({
       activeReferentId: id
-    }, () => console.log('curr referent status updated'))
+    })
   }
 
   render() {

@@ -20,7 +20,6 @@ class Api::ReferentsController < ApplicationController
   end
 
   def destroy
-  
     @referent = Referent.find_by(id: params[:id])
     
     if !@referent.nil?
