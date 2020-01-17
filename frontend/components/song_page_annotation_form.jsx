@@ -28,7 +28,7 @@ class SongPageAnnotationForm extends React.Component {
 
   handleSubmit(e) {
 
-    e.preventDefault;
+    e.preventDefault();
     
     if (this.props.formType === "Edit") {
 
