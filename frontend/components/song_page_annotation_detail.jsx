@@ -25,7 +25,6 @@ class SongPageAnnotationDetail extends React.Component {
   updateAnnotation(currId, currSizzle){
 
     if (this.props.currentUserId === undefined) {
-
       alert('Must be signed in to do this action!');
 
     } else {
@@ -36,7 +35,6 @@ class SongPageAnnotationDetail extends React.Component {
   }
 
   handleDelete(currId) {
-
     if (this.props.currentUserId === undefined) {
 
       alert('Must be signed in to do this action!')
@@ -51,16 +49,12 @@ class SongPageAnnotationDetail extends React.Component {
       this.props.deleteAnnotation(currId);
         this.props.setCurrAnnotationStatus(-1, "", false);
 
-      debugger;
       document.getElementsByClassName('active')[0].classList.remove('referent')
       
 
       this.props.deleteReferent(this.props.activeReferentId)
         .then(() => this.props.fetchReferents());
         this.props.setCurrReferentStatus(-1);
-
-
-      
 
     } 
   }
@@ -71,8 +65,6 @@ class SongPageAnnotationDetail extends React.Component {
 
     if (this.props.activeAnnotationId !== -1 && !this.props.annotationFormActive && this.props.annotations[this.props.activeAnnotationId] !== undefined) { /* annotation show */
       
-
-      debugger;
 
       return (
         <div>
