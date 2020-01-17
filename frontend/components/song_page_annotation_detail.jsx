@@ -26,23 +26,54 @@ class SongPageAnnotationDetail extends React.Component {
 
     if (this.props.currentUserId === undefined) {
 
-      console.log('no user logged in')
+      alert('Must be signed in to do this action!');
 
     } else {
 
       this.setState({ height: document.getElementsByClassName('annotation-body')[0].offsetHeight}, ()=> console.log(this.state.height));
       this.props.setCurrAnnotationStatus(currId, currSizzle, true);
-
     }
+  }
 
+  handleDelete(currId) {
+
+    if (this.props.currentUserId === undefined) {
+
+      alert('Must be signed in to do this action!')
+
+    } else {
+
+      // this.props.deleteAnnotation(currId)
+      //   .then( () => this.props.setCurrAnnotationStatus(-1, "", false))
+      //   .then(() => this.props.deleteReferent(this.props.activeReferentId))
+      //   .then( () => this.props.setCurrReferentStatus(-1))
+
+      this.props.deleteAnnotation(currId);
+        this.props.setCurrAnnotationStatus(-1, "", false);
+
+      debugger;
+      document.getElementsByClassName('active')[0].classList.remove('referent')
+      
+
+      this.props.deleteReferent(this.props.activeReferentId)
+        .then(() => this.props.fetchReferents());
+        this.props.setCurrReferentStatus(-1);
+
+
+      
+
+    } 
   }
 
   renderAnnotationOrForm() {
 
     let annotationSizzleEnd = (!this.props.annotationSizzle.includes("?")) ? "..." : "";
 
-    if (this.props.activeAnnotationId !== -1 && !this.props.annotationFormActive) { /* annotation show */
+    if (this.props.activeAnnotationId !== -1 && !this.props.annotationFormActive && this.props.annotations[this.props.activeAnnotationId] !== undefined) { /* annotation show */
       
+
+      debugger;
+
       return (
         <div>
 
@@ -62,6 +93,7 @@ class SongPageAnnotationDetail extends React.Component {
           <div className="annotation-detail">
 
               <span onClick={() => this.updateAnnotation(this.props.activeAnnotationId, this.props.annotationSizzle)} className="annotation-edit-button">Edit this annotation</span>
+            <span onClick={() => this.handleDelete(this.props.activeAnnotationId)} className="annotation-delete annotation-edit-button">Delete</span>
 
           </div>
 

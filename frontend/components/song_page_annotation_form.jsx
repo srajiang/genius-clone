@@ -59,7 +59,7 @@ class SongPageAnnotationForm extends React.Component {
         song_id: parseInt(this.props.match.params.songId)
       }
 
-      debugger;
+  
 
       //step one: create the referent (async function with a .then)
 

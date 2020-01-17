@@ -75,13 +75,12 @@ class SongPageLyrics extends React.Component {
 
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
 
-    debugger;
-
+    
     this.props.setCurrReferentStatus(refId);
 
-    let annotationId = this.props.referents[refId].annotationIds[0];
+    // let annotationId = this.props.referents[refId].annotationIds[0];
+    let annotationId = this.props.referents[refId].id;
 
-    debugger;
     this.props.setCurrAnnotationStatus(annotationId, e.target.innerText, false);
 
   }
@@ -147,6 +146,7 @@ class SongPageLyrics extends React.Component {
 
       } else { /* lyric line IS part of a referent  */
 
+        debugger
 
         // take the key val pair for fragment start and end and use it to slice the lyrics
         let slice = lyrics.slice(i, referentStartEndHash[i][0]);

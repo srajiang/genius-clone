@@ -89,6 +89,8 @@ class SongPage extends React.Component {
                 activeReferentId={this.state.activeReferentId}
                 setCurrAnnotationStatus={this.setCurrAnnotationStatus}
                 currentUserId={this.props.currentUserId}
+                deleteReferent={this.props.deleteReferent}
+                fetchReferents={this.props.fetchReferents}
                 />
             </div>
           </div>

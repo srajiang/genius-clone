@@ -33,6 +33,9 @@ class SongPageAnnotation extends React.Component {
         setCurrReferentStatus={this.props.setCurrReferentStatus}
         currentUserId={this.props.currentUserId}
         activeReferentId={this.props.activeReferentId}
+        deleteAnnotation={this.props.deleteAnnotation}
+        deleteReferent={this.props.deleteReferent}
+        fetchReferents={this.props.fetchReferents}
        />
 
     )

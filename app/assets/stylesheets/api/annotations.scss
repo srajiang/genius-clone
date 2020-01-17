@@ -148,3 +148,13 @@
 .annotation-edit-submit:hover {
   border-bottom: 2px solid #99a7ee;
 }
+
+.annotation-delete {
+  color: red;
+  margin-left: 30px;
+  
+}
+
+.annotation-delete:hover {
+  border-color: red;
+}
