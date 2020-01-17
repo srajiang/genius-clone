@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchSong } from '../actions/song_actions';
 import { fetchAnnotations, createAnnotation, deleteAnnotation } from '../actions/annotation_actions';
-import { fetchReferents, createReferent } from '../actions/referent_actions';
+import { fetchReferents, createReferent, deleteReferent } from '../actions/referent_actions';
 
 import SongPage from './song_page';
 
@@ -22,7 +22,8 @@ const mDTP = (dispatch) => ({
   createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
   deleteAnnotation: (annotationId) => dispatch(deleteAnnotation(annotationId)),
   fetchReferents: (songId) => dispatch(fetchReferents(songId)),
-  createReferent: (referent) => dispatch(createReferent(referent))
+  createReferent: (referent) => dispatch(createReferent(referent)), 
+  deleteReferent: (referentId) => dispatch(deleteReferent(referentId))
 
 })
 

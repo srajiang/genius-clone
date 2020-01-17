@@ -21,13 +21,13 @@ class Api::ReferentsController < ApplicationController
 
   def destroy
   
-    @referent = Referent.find_by(id: params[:referentId])
+    @referent = Referent.find_by(id: params[:id])
     
     if !@referent.nil?
       @referent.destroy
       render json: ['null']
     else
-      render json: ['No referent by that id found', params[:referentId]], status: 422
+      render json: ['No referent by that id found', params[:id]], status: 422
     end
   
   end
