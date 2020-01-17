@@ -4,7 +4,7 @@ import SongPageAnnotationForm from './song_page_annotation_form';
 
 const mSTP = (state) => ({
   
-  currentUserId: state.session.session.currentUserId,
+  currentUserId: state.session.currentUserId,
   formType: "Edit"
 
 })

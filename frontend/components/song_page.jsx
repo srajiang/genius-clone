@@ -44,10 +44,10 @@ class SongPage extends React.Component {
   }
 
   setCurrReferentStatus(id) {
-
+    debugger;
     this.setState({
       activeReferentId: id
-    })
+    }, () => console.log('curr referent status updated'))
   }
 
   render() {

@@ -74,11 +74,14 @@ class SongPageLyrics extends React.Component {
     this.resetActiveRegion();
 
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
-    
+
+    debugger;
+
     this.props.setCurrReferentStatus(refId);
 
     let annotationId = this.props.referents[refId].annotationIds[0];
 
+    debugger;
     this.props.setCurrAnnotationStatus(annotationId, e.target.innerText, false);
 
   }

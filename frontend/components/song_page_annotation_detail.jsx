@@ -25,7 +25,7 @@ class SongPageAnnotationDetail extends React.Component {
   updateAnnotation(currId, currSizzle){
 
     if (this.props.currentUserId === undefined) {
-      
+
       console.log('no user logged in')
 
     } else {
