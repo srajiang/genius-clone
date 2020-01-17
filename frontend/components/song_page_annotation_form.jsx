@@ -23,6 +23,7 @@ class SongPageAnnotationForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleCreateAnnotation = this.handleCreateAnnotation.bind(this);
+    // this.handleFetchReferents = this.handleFetchReferents.bind(this);
   }
 
   handleSubmit(e) {
@@ -58,6 +59,10 @@ class SongPageAnnotationForm extends React.Component {
         song_id: parseInt(this.props.match.params.songId)
       }
 
+      debugger;
+
+      //step one: create the referent (async function with a .then)
+
       this.props.createReferent(referent)
         .then(action => this.handleCreateAnnotation(action.referent))
       
@@ -65,8 +70,22 @@ class SongPageAnnotationForm extends React.Component {
 
   }
 
+  // handleFetchReferents(annotation) {
+
+  //   let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
+    
+  //   this.props.fetchReferents()
+  //     .then(() => this.props.setCurrAnnotationStatus(annotation.id, sizzleLyrics, false))
+  // }
+
+
   handleCreateAnnotation(referent) {
+    
+    debugger;
+
     let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
+
+
     this.props.setCurrReferentStatus(referent.id);
 
     let annotation = {
@@ -75,8 +94,11 @@ class SongPageAnnotationForm extends React.Component {
       annotator_id: this.props.currentUserId
     }
 
+    debugger;
+
     this.props.createAnnotation(annotation)
       .then((action) => this.props.setCurrAnnotationStatus(action.annotation.id, sizzleLyrics, false))
+  
 
   }
   

@@ -4,7 +4,7 @@ import {
   REMOVE_ANNOTATION
 } from '../actions/annotation_actions';
 
-const AnnotationsReducer = (state ={}, action) => {
+const AnnotationsReducer = (state = {}, action) => {
 
   Object.freeze(state);
 
