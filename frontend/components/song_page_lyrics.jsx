@@ -146,7 +146,6 @@ class SongPageLyrics extends React.Component {
 
       } else { /* lyric line IS part of a referent  */
 
-
         // take the key val pair for fragment start and end and use it to slice the lyrics
         let slice = lyrics.slice(i, referentStartEndHash[i][0]);
         

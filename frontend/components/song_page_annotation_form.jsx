@@ -59,8 +59,6 @@ class SongPageAnnotationForm extends React.Component {
         song_id: parseInt(this.props.match.params.songId)
       }
 
-  
-
       //step one: create the referent (async function with a .then)
 
       this.props.createReferent(referent)
@@ -81,7 +79,6 @@ class SongPageAnnotationForm extends React.Component {
 
   handleCreateAnnotation(referent) {
     
-
     let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
 
 

@@ -29,10 +29,37 @@ class SongPageAnnotationDetail extends React.Component {
 
     } else {
 
-      this.setState({ height: document.getElementsByClassName('annotation-body')[0].offsetHeight}, ()=> console.log(this.state.height));
+      this.setState({ height: document.getElementsByClassName('annotation-body')[0].offsetHeight});
       this.props.setCurrAnnotationStatus(currId, currSizzle, true);
     }
   }
+
+  // handleDelete(currId) {
+  //   if (this.props.currentUserId === undefined) {
+
+  //     alert('Must be signed in to do this action!')
+
+  //   } else {
+
+  //     // this.props.deleteAnnotation(currId)
+  //     //   .then( () => this.props.setCurrAnnotationStatus(-1, "", false))
+  //     //   .then(() => this.props.deleteReferent(this.props.activeReferentId))
+  //     //   .then( () => this.props.setCurrReferentStatus(-1))
+
+  //     this.props.deleteAnnotation(currId);
+      
+  //     this.props.setCurrAnnotationStatus(-1, "", false);
+
+  //     document.getElementsByClassName('active')[0].classList.remove('referent')
+      
+
+  //     this.props.deleteReferent(this.props.activeReferentId)
+  //       .then(() => this.props.fetchReferents());
+
+  //       this.props.setCurrReferentStatus(-1);
+
+  //   } 
+  // }
 
   handleDelete(currId) {
     if (this.props.currentUserId === undefined) {
@@ -47,17 +74,21 @@ class SongPageAnnotationDetail extends React.Component {
       //   .then( () => this.props.setCurrReferentStatus(-1))
 
       this.props.deleteAnnotation(currId);
-        this.props.setCurrAnnotationStatus(-1, "", false);
 
-      document.getElementsByClassName('active')[0].classList.remove('referent')
-      
+      this.props.setCurrAnnotationStatus(-1, "", false);
 
       this.props.deleteReferent(this.props.activeReferentId)
-        .then(() => this.props.fetchReferents());
-        this.props.setCurrReferentStatus(-1);
+        // .then(() => this.props.fetchReferents())
+       
+          // document.getElementsByClassName('active')[0].classList.remove('referent')
+          // this.props.setCurrReferentStatus(-1);
+        
 
-    } 
+      // this.props.setCurrReferentStatus(-1);
+
+    }
   }
+
 
   renderAnnotationOrForm() {
 
