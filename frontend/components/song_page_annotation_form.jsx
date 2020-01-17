@@ -81,7 +81,6 @@ class SongPageAnnotationForm extends React.Component {
 
   handleCreateAnnotation(referent) {
     
-    debugger;
 
     let sizzleLyrics = document.getElementsByClassName('sizzle')[0].innerText;
 
@@ -93,8 +92,6 @@ class SongPageAnnotationForm extends React.Component {
       referent_id: this.props.activeReferentId,
       annotator_id: this.props.currentUserId
     }
-
-    debugger;
 
     this.props.createAnnotation(annotation)
       .then((action) => this.props.setCurrAnnotationStatus(action.annotation.id, sizzleLyrics, false))
