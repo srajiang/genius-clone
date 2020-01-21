@@ -1,6 +1,6 @@
 # Snillingur "Nordic Genius"
 
-Snillingur "Nordic Genius" is a single-page application clone of Genius.com for Scandinavian artists, created using: 
+Snillingur "Nordic Genius" is a single-page application clone of Genius.com featuring exclusively Scandinavian artists, created using: 
 
 * Ruby on Rails for the backend
 * PostgreSQL database
