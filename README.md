@@ -4,7 +4,7 @@
 
 <img width="1117" alt="Screen Shot 2020-02-05 at 8 35 18 PM" src="https://user-images.githubusercontent.com/55667998/73906239-13d06300-4857-11ea-9948-7a4e2084ea12.png">
 
-Snillingur "Nordic Genius" is a pixel-perfect tribute to a personal favorite site of mine, Genius.com featuring exclusively Scandinavian artists, created using: 
+Snillingur "Nordic Genius" is a pixel-perfect tribute to a personal favorite site of mine, Genius.com featuring exclusively Nordic artists, created using: 
 
 * Ruby on Rails for the backend
 * PostgreSQL database
