@@ -4,11 +4,11 @@ Snillingur "Nordic Genius" is a single-page application clone of Genius.com feat
 
 * Ruby on Rails for the backend
 * PostgreSQL database
-* JBuilder to create the API for Ajax calls
-* React.js with a Redux architectural framework for the frontend components
+* JBuilder to create the API for AJAX calls
+* React.js frontend components with full Redux cycle
 * SCSS for styling
 * Media hosted remotely via AWS S3 cloud storage.
-* User authentication for users via BCrylt
+* Full user authentication flow for users via BCrypt Hashing and salting
 
 Specifications:
 * Ruby version
