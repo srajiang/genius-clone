@@ -1,6 +1,10 @@
 # Snillingur "Nordic Genius"
 
-Snillingur "Nordic Genius" is a single-page application clone of Genius.com featuring exclusively Scandinavian artists, created using: 
+# [Live](https://snillingur.herokuapp.com/#/)
+
+<img width="1408" alt="screenshot" src="https://user-images.githubusercontent.com/55667998/73905908-c43d6780-4855-11ea-9199-352a3f92e74d.png">
+
+Snillingur "Nordic Genius" is a pixel-perfect tribute to a personal favorite site of mine, Genius.com featuring exclusively Scandinavian artists, created using: 
 
 * Ruby on Rails for the backend
 * PostgreSQL database
