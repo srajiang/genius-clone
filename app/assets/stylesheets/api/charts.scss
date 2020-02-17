@@ -201,7 +201,7 @@ div.chart-index-filter:hover {
   
 }
 
-.nav-bar-sub > div {
+.active {
   font-size: 14px;
   
   padding-right: 30px;
@@ -209,10 +209,16 @@ div.chart-index-filter:hover {
   border-right: 2px solid white;
 
   cursor: pointer;
+  color: white;
+}
+
+.active:hover {
+  color: yellow;
 }
 
 div.nav-bar-sub-icons {
 
+  padding-left: 30px;
   border: none;
 
 }
@@ -229,6 +235,45 @@ a.fa-icon:visited {
 
   color: #e8e8e8;
 
+}
+
+.footer, .push {
+  height: auto;
+}
+
+.footer {
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  
+}
+
+
+.footer > a {
+  margin-top: 10px;
+}
+
+.footer a:visited {
+  color: white;
+  transition: all .3s ease;
+}
+
+.footer a:hover {
+  color: yellow;
+
+}
+
+.footer div {
+  padding-top: 5px;
+  margin-bottom: 10px;
 }
 
 
@@ -273,3 +318,4 @@ a.fa-icon:visited {
     transform: rotate(360deg);
   }
 }
+

@@ -21,7 +21,6 @@ const SongPageHeader = (props) => {
           <div>
             <p>{props.song.album}</p>
           </div>
-
         </div>
       </div>
 

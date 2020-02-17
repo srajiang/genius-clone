@@ -34,5 +34,5 @@ class Api::ReferentsController < ApplicationController
   private
   def referent_params
     params.require(:referent).permit(:fragment_range_start, :fragment_range_end, :song_id)
-  end
+  end.
 end
