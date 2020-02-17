@@ -8,6 +8,8 @@ import SongPageAnnotationCreateContainer from './song_page_annotation_create_con
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
+import { Link } from 'react-router-dom';
+
 class SongPageAnnotationDetail extends React.Component {
 
   constructor(props) {
@@ -15,7 +17,6 @@ class SongPageAnnotationDetail extends React.Component {
 
     this.state = {
       height: null,
-      // currAnnotation: this.props.annotations[this.props.activeAnnotationId]
     }
 
     this.updateAnnotation = this.updateAnnotation.bind(this);
@@ -139,15 +140,22 @@ class SongPageAnnotationDetail extends React.Component {
       )
     } 
 
-    return (
-      <SongPageAnnotationCreateContainer
-        setCurrAnnotationStatus={this.props.setCurrAnnotationStatus}
-        currAnnotation={this.props.annotations[this.props.activeAnnotationId]}
-        annotationSizzle={this.props.annotationSizzle}
-        annotationSizzleEnd={annotationSizzleEnd}
-        setCurrReferentStatus={this.props.setCurrReferentStatus}
-        activeReferentId={this.props.activeReferentId}
-      />
+    if (this.props.currentUserId) {
+      
+      return (
+        <SongPageAnnotationCreateContainer
+          setCurrAnnotationStatus={this.props.setCurrAnnotationStatus}
+          currAnnotation={this.props.annotations[this.props.activeAnnotationId]}
+          annotationSizzle={this.props.annotationSizzle}
+          annotationSizzleEnd={annotationSizzleEnd}
+          setCurrReferentStatus={this.props.setCurrReferentStatus}
+          activeReferentId={this.props.activeReferentId}
+        />
+      )
+    }
+
+    return ( // log in if not logged in
+      <p><Link to="/signin">Log in or sign up</Link> to create an annotation</p>
     )
 
   }

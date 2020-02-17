@@ -179,6 +179,22 @@ div.chart-index-filter:hover {
 }
 
 /*  -------- NavBarSub  -------- */
+
+.active {
+  font-size: 14px;
+  
+  padding-right: 30px;
+  padding-left: 30px;
+  border-right: 2px solid white;
+
+  cursor: pointer;
+  color: white;
+}
+
+.active:hover {
+  color: yellow;
+}
+
 .nav-bar-sub-wrapper {
 
   display: flex;
@@ -199,21 +215,6 @@ div.chart-index-filter:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   
-}
-
-.active {
-  font-size: 14px;
-  
-  padding-right: 30px;
-  padding-left: 30px;
-  border-right: 2px solid white;
-
-  cursor: pointer;
-  color: white;
-}
-
-.active:hover {
-  color: yellow;
 }
 
 div.nav-bar-sub-icons {

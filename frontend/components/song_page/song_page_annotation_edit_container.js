@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateAnnotation } from '../actions/annotation_actions';
+import { updateAnnotation } from '../../actions/annotation_actions';
 import SongPageAnnotationForm from './song_page_annotation_form';
 
 const mSTP = (state) => ({

@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util'
 
-import NavBarContainer from './nav_bar_container';
-import SignupContainer from './signup_container';
-import SigninContainer from './signin_container';
-import NavBarSub from './nav_bar_sub';
+import NavBarContainer from './nav/nav_bar_container';
+import SignupContainer from './session/signup_container';
+import SigninContainer from './session/signin_container';
+import NavBarSub from './nav/nav_bar_sub';
 import Footer from './footer';
-import ChartIndexContainer from './chart_index_container';
-import SongPageContainer from './song_page_container';
+import ChartIndexContainer from './chart/chart_index_container';
+import SongPageContainer from './song_page/song_page_container';
 import ErrorPage from './error_page';
 
 export default () => {
@@ -16,7 +16,6 @@ export default () => {
   return (
 
     <>
-
       <section>
         <Route path="/" component={NavBarContainer}></Route>
         <Route path="/" component={NavBarSub}></Route>
@@ -32,7 +31,7 @@ export default () => {
         </Switch>
 
       </section>
-      <div class="push"></div>
+      <div className="push"></div>
 
       <Route path="/" component={Footer}></Route>
 

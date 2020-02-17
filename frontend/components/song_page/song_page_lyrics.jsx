@@ -53,11 +53,20 @@ class SongPageLyrics extends React.Component {
 
   resetActiveRegion() {
 
+
     let currActive = document.querySelectorAll('.active-temp');
+    // let currRef = document.getElementsByClassName('activeLyric');
+  
+    
+    // while (currRef[0]) {
+    //   console.log('in remove loop', currRef[0].classList);
+    //   currRef[0].classList.value ="referent";
+    // }
 
     for (let i = 0; i < currActive.length; i++) {
       currActive[i].classList.remove('active-temp');
     }
+
     this.props.setCurrAnnotationStatus(-1, "", false);
 
   }
@@ -74,11 +83,9 @@ class SongPageLyrics extends React.Component {
     this.resetActiveRegion();
 
     let refId = parseInt(e.currentTarget.getAttribute('refid'));
-
-    
+ 
     this.props.setCurrReferentStatus(refId);
 
-    // let annotationId = this.props.referents[refId].annotationIds[0];
     let annotationId = this.props.referents[refId].id;
 
     this.props.setCurrAnnotationStatus(annotationId, e.target.innerText, false);
@@ -150,7 +157,7 @@ class SongPageLyrics extends React.Component {
         let slice = lyrics.slice(i, referentStartEndHash[i][0]);
         
         //take sliced song lines and push to reconciledLyrics as a nested JS element
-        let active = (referentStartEndHash[i][1] === this.props.activeReferentId) ? "active": "";
+        let active = (referentStartEndHash[i][1] === this.props.activeReferentId) ? "activeLyric": "";
 
         reconciledLyrics.push(
           
@@ -159,7 +166,21 @@ class SongPageLyrics extends React.Component {
             refid={referentStartEndHash[i][1]} 
             key={Math.random() * 100000000} className={`referent ${active}`}>
 
-            {slice.map((lyric, idx) => <p id={i} key={i + idx} ><span id={i}>{lyric}</span></p>)}
+            { 
+              slice.map((lyric, idx) => {
+
+                return (
+            
+                  <p id={i} key={i + idx} >
+                    <span id={i}>{lyric}</span>
+                  </p> 
+
+                )
+            })
+            
+
+
+            }
               
           </div>
         )
