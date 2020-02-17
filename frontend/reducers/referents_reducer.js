@@ -17,7 +17,6 @@ const ReferentsReducer = (state = {}, action) => {
     case REMOVE_REFERENT:
       let newState = Object.assign({}, state)
       delete newState[action.referentId]
-
       return newState;
     default:
       return state;

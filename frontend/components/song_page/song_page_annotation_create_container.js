@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { createAnnotation, deleteAnnotation } from '../actions/annotation_actions';
-import { createReferent, deleteReferent, fetchReferents } from '../actions/referent_actions';
+import { createAnnotation, deleteAnnotation } from '../../actions/annotation_actions';
+import { createReferent, deleteReferent, fetchReferents } from '../../actions/referent_actions';
 
 import SongPageAnnotationForm from './song_page_annotation_form';
 

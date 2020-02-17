@@ -1,8 +1,5 @@
 import React from 'react';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
-
 import SongPageAnnotationDetail from './song_page_annotation_detail';
 
 class SongPageAnnotation extends React.Component {

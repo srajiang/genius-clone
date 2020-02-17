@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchSong } from '../actions/song_actions';
-import { fetchAnnotations, createAnnotation, deleteAnnotation } from '../actions/annotation_actions';
-import { fetchReferents, createReferent, deleteReferent } from '../actions/referent_actions';
+import { fetchSong } from '../../actions/song_actions';
+import { fetchAnnotations, createAnnotation, deleteAnnotation } from '../../actions/annotation_actions';
+import { fetchReferents, createReferent, deleteReferent } from '../../actions/referent_actions';
 
 import SongPage from './song_page';
 

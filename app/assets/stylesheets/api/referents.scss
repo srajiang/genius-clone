@@ -4,9 +4,6 @@
 
 /* Song Lyrics styles */
 
-// .song-page-lyrics p {
-//   display: inline-block;
-// }
 
 .referent span {
 
@@ -26,10 +23,10 @@
 
 }
 
-// .active span {
-//   background-color: #FFFF64;
-// }
-
 span.active-temp{
   background-color: #FFFF64;
+}
+
+.activeLyric > p > span {
+  // background-color: yellow;
 }
