@@ -21,13 +21,21 @@ class Api::AnnotationsController < ApplicationController
   end
 
   def update
+
+
     @annotation = Annotation.find_by(id: params[:id])
 
     if !@annotation.nil?
 
-      if @annotation.update(annotation_params)
+      p "Annotation found"
+      p @annotation
+      p annotation_params
+
+      if @annotation.update_attributes(annotation_params)
+        p 'Updating'
         render :show
       else
+        p 'Could not update'
         render json: @annotation.errors.full_messages, status: 422
       end
 

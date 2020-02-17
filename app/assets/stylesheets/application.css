@@ -47,6 +47,17 @@ body, h1, h2, h3, h4, h5, p, ul[class], li[class], dl, dd, a {
 
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+
+}
+
+section {
+  min-height: 100vh;
+  margin-bottom: 5vh;
+}
+
 /* styles for body */
 body {
   min-height: 100vh;
