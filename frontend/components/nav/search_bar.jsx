@@ -1,8 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
 import SearchBarItem from './search_bar_item';
+
 
 
 class SearchBar extends React.Component {
@@ -16,29 +18,29 @@ class SearchBar extends React.Component {
     }
 
     this.updateInput = this.updateInput.bind(this);
+    
   }
 
   renderSearchItemsOrNull(songs) {
-
     if (songs.length === 0) return <p id="search-null">No results found by that title</p>;
-
     return (
      
       songs.map((song, idx) => {
         if (idx < 9) return < SearchBarItem song={song} key={idx} />
       })  
-     
     )
   }
 
-
   renderSearchOptions() {
 
-    let songs = Object.values(this.props.songs);
-
-    if (this.state.input) {
-      songs = songs.filter(song => song.title.includes(this.state.input))
+    if (!this.props.songs.songsByTitle) {
+      return null;
     }
+
+    console.log('SONGS BY TITLE', this.props.songs.songsByTitle);
+
+    let songs = Object.values(this.props.songs.songsByTitle);
+    console.log('SONGS', songs);
 
     return (
 
@@ -55,15 +57,18 @@ class SearchBar extends React.Component {
     )
   }
 
+
+
+  
   updateInput(e) {
+
     this.setState({ input: e.target.value});
+    const searchDebounced = AwesomeDebouncePromise(this.props.search(this.state.input), 500);
+    searchDebounced();
+
   }
 
   render() {
-
-    if (!this.props.songs) {
-      return null;
-    }
 
     return(
 
@@ -97,3 +102,4 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar;
+
