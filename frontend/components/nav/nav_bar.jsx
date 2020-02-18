@@ -20,6 +20,7 @@ class NavBar extends React.Component {
     if ( currentUserId !== null ) {
       return (
         <div>
+          {/* <a>{}</a> */}
           <a onClick={ currentUserId => this.logoutUser(currentUserId)}>SIGN OUT</a>
           <Redirect to="/"/>
         </div>
