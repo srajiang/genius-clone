@@ -15,20 +15,107 @@
 
 }
 
+.left-nav-container{
+  position: relative;
+ 
+}
+
 .left-nav {
 
-  color: #FFFF64;
+  background-color: white;
+  padding: .4rem;
+  margin-left: .3rem;
+  margin-right: .3rem;
+  display: flex;
+
+  width: 250px;
+  justify-content: space-between;
 
 }
 
+#search-bar-header {
+
+  border-bottom: 1px solid #e9e9e9;
+  padding: .5rem;
+
+}
+
+#search-bar-dropdown {
+  
+  // display: none;
+
+  position: absolute;
+  background-color: white;
+
+  width: 350px;
+  left: .3rem;
+  top: 3rem;
+
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
+  z-index: 100;
+  
+}
+
+#search-bar-index {
+  padding: .5rem;
+}
+
+
+#search-input:focus ~ #search-bar-dropdown {
+  display: block;
+}
+
+.search-bar-item {
+  display: flex;
+  align-items: center;
+  
+}
+
+.search-bar-item:hover {
+  background-color: #e9e9e9;
+}
+
+.search-item-img {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.search-item-img > img {
+  height: 45px;
+  width: 45px;
+  flex: 1;
+}
+
+.search-item-title {
+  flex: 2;
+}
+
+.search-item-artist {
+  flex: 1;
+  font-size: .8rem;
+}
+
+#search-null {
+  padding: .6rem;
+
+}
+
+
 .right-nav {
 
+  position: relative;
   padding-right: 15px;
   font-size: 13px;
   letter-spacing: 0.08em;
   transform: all .3s ease;
   cursor: pointer;
 
+}
+
+.left-nav input:active, input:focus {
+  outline: none;
 }
 
 .right-nav a:visited {

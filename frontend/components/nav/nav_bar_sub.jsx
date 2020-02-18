@@ -19,8 +19,7 @@ const NavBarSub = () => {
           <a target="_blank" href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faGithub} /></a>
           <a target="_blank" href="https://github.com/srajiang" className="fa-icon"><FontAwesomeIcon icon={faPortrait} /></a>
 
-        </div>
-        
+        </div>    
 
       </div>
     </div>

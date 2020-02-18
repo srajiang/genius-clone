@@ -1,6 +1,7 @@
-// import Sprites from '../../app/assets/images/sprites.png';
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+
+import SearchBarContainer from './search_bar_container';
 
 class NavBar extends React.Component {
 
@@ -19,6 +20,7 @@ class NavBar extends React.Component {
     if ( currentUserId !== null ) {
       return (
         <div>
+          {/* <a>{}</a> */}
           <a onClick={ currentUserId => this.logoutUser(currentUserId)}>SIGN OUT</a>
           <Redirect to="/"/>
         </div>
@@ -31,7 +33,9 @@ class NavBar extends React.Component {
     return (
       <header className="nav-bar">
 
-        <div className="left-nav">LeftNav</div>
+       
+        <SearchBarContainer />
+    
         <div className="center-nav">
           <Link to="/">
 
