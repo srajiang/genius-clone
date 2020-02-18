@@ -1,8 +1,8 @@
-export const fetchSearchResults = searchInput => {
+export const fetchSearchResults = searchInput => (
 
   $.ajax({
     method: 'GET',
-    url:  `api/search/?input=${searchInput}`
+    url:  `api/searches/?input=${searchInput}`
   })
 
-}
+)

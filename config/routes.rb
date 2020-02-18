@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    get 'searches/index'
+    get 'searches' => 'searches#index'
   end
-  get 'searches/index'
   
   namespace :api, defaults: { format: :json } do
 

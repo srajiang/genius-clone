@@ -1,14 +1,18 @@
+p 'TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING'
+p 'TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING'
+p 'TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING'
+p 'TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING'
+p 'TESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTINGTESTING'
 
 json.songs_by_title do
 
   @songs_by_title.each do |song|
 
     json.set! song.id do
+      json.partial! 'api/songs/song', song: song
+      json.image_url url_for(song.photo)
 
-      json.partial! '../songs/song', song: song
-      json.image_url url_for(song.phot
     end
-
   end
-
+  
 end
