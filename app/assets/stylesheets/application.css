@@ -32,7 +32,7 @@ ol[class] {
 }
 
 
-body, h1, h2, h3, h4, h5, p, ul[class], li[class], dl, dd, a {
+body, h1, h2, h3, h4, h5, p, ul[class], li[class], dl, dd, a, form, input {
 
   margin: 0;
   border: 0;
