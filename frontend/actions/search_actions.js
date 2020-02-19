@@ -4,7 +4,7 @@ export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 
 /* action creators */
 
-export const receiveSeachResults = payload => {
+export const receiveSearchResults = payload => {
 
   return (
 
@@ -16,11 +16,13 @@ export const receiveSeachResults = payload => {
   )
 }
 
+
+
 /* thunk action creator */
 
 export const search = searchInput => dispatch => fetchSearchResults(searchInput)
   .then(
-    payload => dispatch(receiveSeachResults(payload)),
+    payload => dispatch(receiveSearchResults(payload)),
     response => console.log('bad request', response.responseJSON)
   )
 
