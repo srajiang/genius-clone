@@ -21,7 +21,7 @@ export const receiveSeachResults = payload => {
 export const search = searchInput => dispatch => fetchSearchResults(searchInput)
   .then(
     payload => dispatch(receiveSeachResults(payload)),
-    response => dispatch(receiveSearchErrors(response.responseJSON))
+    response => console.log('bad request', response.responseJSON)
   )
 
 

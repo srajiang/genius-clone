@@ -7,11 +7,10 @@ class Api::SearchesController < ApplicationController
     @songs_by_title = Song.where("lower(title) LIKE ?", "%#{query}%")
     @songs_by_lyric = Song.where('lower(body) LIKE ?', "%#{query}%")
 
-    p " ACTIVE RECORD --------------------------------------------------"
-    p @songs_by_title
-    p @songs_by_lyric
+    if @songs_by_title
+      render :index
+    end
 
-    render :index
   end
 
 end
