@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import Loader from "react-loader-spinner";
+import { updateSearchBarState } from '../../actions/ui_actions';
 
 import SearchBarItem from './search_bar_item';
 
@@ -40,8 +41,6 @@ class SearchBar extends React.Component {
 
     if (!songs || songs.length === 0) return <p id="search-null">No results found by that title</p>;
 
-    console.log('SONGS', songs);
-    
     return ( 
       songs.map((song, idx) => {
         if (idx < 9) return < SearchBarItem song={song} key={idx} />
@@ -52,16 +51,17 @@ class SearchBar extends React.Component {
 
   renderSearchOptions() {
 
-    let songs;
+    if (this.props.searchBarActive === false) return null;
 
+    let songs;
     if (this.props.songs.songsByTitle) {
       songs = Object.values(this.props.songs.songsByTitle);
     }
 
     return (
 
-      <div id="search-bar-dropdown">
-        <p id="search-bar-header">Search Results</p>
+      <div className="search-bar-dropdown">
+        <p className="search-bar-header">Search Results</p>
         <ul className="search-bar-index">
 
           {
@@ -73,13 +73,18 @@ class SearchBar extends React.Component {
     )
   }
 
-
-
   
   updateInput(e) {
+    
+    dispatch(updateSearchBarState(true));
 
-    this.setState({ input: e.target.value, loading: true});
+    this.setState({ input: e.target.value, loading: true, active: true});
     this.searchDebounced().then( () => this.setState({ loading: false}));
+  }
+
+
+  dismissSearch() {
+    this.setState({ active: false })
   }
 
   render() {
@@ -91,7 +96,7 @@ class SearchBar extends React.Component {
 
           <form>
             <input
-            id="search-input" 
+            className="search-input" 
             placeholder="Search Lyrics & more"
             value={this.state.input}
             onChange={(e) => this.updateInput(e)}
