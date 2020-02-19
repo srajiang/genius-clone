@@ -97,7 +97,7 @@ class SearchBar extends React.Component {
           <form>
             <input
             className="search-input" 
-            placeholder="Search Lyrics & more"
+            placeholder="Search lyrics & more"
             value={this.state.input}
             onChange={(e) => this.updateInput(e)}
             >

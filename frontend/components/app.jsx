@@ -23,13 +23,12 @@ export default () => {
       (
         e.target.className.includes("search-item") ||
         e.target.className.includes("chart") ||
-        e.target.className.includes("nav")
+        e.target.className.includes("nav") ||
+        e.target.className.includes('item')
       )
     ) {
       dispatch(updateSearchBarState(false));
     }
-        
-
   }
 
   return (
