@@ -73,12 +73,19 @@ class SearchBar extends React.Component {
     )
   }
 
-  
-  updateInput(e) {
-    
+  submit(e) {
+
+    e.preventDefault();
     dispatch(updateSearchBarState(true));
 
-    this.setState({ input: e.target.value, loading: true, active: true});
+  }
+
+  
+  updateInput(e) {
+
+    dispatch(updateSearchBarState(true));
+
+    this.setState({ input: e.target.value, loading: true, active: true });
     this.searchDebounced().then( () => this.setState({ loading: false}));
   }
 
@@ -89,32 +96,23 @@ class SearchBar extends React.Component {
 
   render() {
 
-    return(
-
+    return (
       <div className="left-nav-container">
-        < div className="left-nav">
-
-          <form>
+        <div className="left-nav">
+          <form onSubmit={e => this.submit(e)}>
             <input
-            className="search-input" 
-            placeholder="Search lyrics & more"
-            value={this.state.input}
-            onChange={(e) => this.updateInput(e)}
-            >
-            </input>
-
+              className="search-input"
+              placeholder="Search lyrics & more"
+              value={this.state.input}
+              onChange={e => this.updateInput(e)}
+            ></input>
           </form>
 
-          
-
           <FontAwesomeIcon className="left-nav-icon" icon={faSearch} />
-
-        </ div>
+        </div>
         {this.renderSearchOptions()}
-
-
       </div>
-    )
+    );
   }
 
 }
