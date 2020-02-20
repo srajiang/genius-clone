@@ -1,32 +1,102 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 import SearchBarContainer from './search_bar_container';
+
+import { updateSessionMenuState } from '../../actions/ui_actions';
+
+
 
 class NavBar extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  logoutUser() {
-    this.props.logoutUser();
+  toggleMenu() {
+    (!this.props.sessionMenuActive) ? dispatch(updateSessionMenuState(true)) : dispatch(updateSessionMenuState(false));
+  }
+
+ 
+
+
+  renderSessionMenu() {
+
+    if (this.props.sessionMenuActive) {
+      
+      return (
+        <>
+          <div className="user-profile-menu">
+            {/* account */}
+            <div className="user-profile-header">ACCOUNT</div>
+
+            {/* account */}
+            
+            <div className="user-profile-view">
+              <Link to="/">View Profile</Link>
+            </div>
+
+            {/* logout */}
+            <div className="user-profile-logout">
+              <a
+                onClick={currentUserId => this.props.logoutUser(currentUserId)}
+              >
+                Sign Out
+              </a>
+            </div>
+
+            {/* logout */}
+          </div>
+        </>
+      );
+    }
+
   }
 
   renderSession() {
 
-    let { currentUserId } = this.props;
+    let { currentUserId, users} = this.props;
 
-    if ( currentUserId !== null ) {
+    if ( currentUserId && users ) {  //already signed in 
+      
       return (
-        <div>
-          {/* <a>{}</a> */}
-          <a onClick={ currentUserId => this.logoutUser(currentUserId)}>SIGN OUT</a>
-          <Redirect to="/"/>
-        </div>
-      )
+        <>
+          <div
+            onClick={this.toggleMenu}
+            className="user-profile"
+          >
+            <div className="user-profile-name">
+              {" "}
+              <FontAwesomeIcon
+                className=""
+                icon={faUserCircle}
+              ></FontAwesomeIcon>
+              <p>{users[currentUserId].username}</p>
+            </div>
+          </div>
+
+          {this.renderSessionMenu()}
+        </>
+      );
+
     }
-    return <Link to="/signin">SIGN IN</Link>
+
+    //not already signed in
+    return (
+      <>
+        <div className="sign-option">
+          <Link to="/signup">SIGN UP</Link>
+        </div>
+        <div className="sign-option">
+          <Link to="/signin">SIGN IN</Link>
+        </div>
+      </>
+    );
   }
 
   render() {
@@ -39,8 +109,6 @@ class NavBar extends React.Component {
         <div className="center-nav">
           <Link to="/">
 
-            {/* <img className="sprite-header" src={window.imagesUrl.sprites} alt="genius-logo"/> */}
-            
             <svg className="app-logo" viewBox="0 0 136.55 13.01">
               <path d="M106.74,3.05h0a3.78,3.78,0,0,0-2.8-1.2,3.93,3.93,0,0,0-2.8,1.1c-.2.2-.3.4-.5.6v.1a.1.1,0,0,0,.1.1,3.19,3.19,0,0,1,1.4-.3,4.25,4.25,0,0,1,2.9,1.2h1.6a.1.1,0,0,0,.1-.1V3.05Zm-.1,4.6h-1.5a1.52,1.52,0,0,1-1.5-1.4c.1,0,0-.1,0-.1a1.23,1.23,0,0,0-.8.4v.2c-.6,1.8.1,2.4.9,2.4h1.1a.1.1,0,0,1,.1.1v.4a.1.1,0,0,0,.1.1,3.81,3.81,0,0,0,1.7-.8V7.75C106.84,7.75,106.74,7.65,106.64,7.65Z" transform="translate(-0.07 -1.05)" />
               <path d="M106.64,12.05h0a7,7,0,0,1-2.5.5,6.81,6.81,0,0,1-6.8-6.8,7,7,0,0,1,.5-2.5c0-.1-.1-.1-.2-.1h-.1a6.44,6.44,0,0,0-1.7,4.5,6.38,6.38,0,0,0,6.4,6.4,6.28,6.28,0,0,0,4.4-1.8v-.1C106.74,12.15,106.64,12.05,106.64,12.05Z" transform="translate(-0.07 -1.05)" />
@@ -66,4 +134,4 @@ class NavBar extends React.Component {
 
 }
 
-export default NavBar;
+export default withRouter(NavBar);
