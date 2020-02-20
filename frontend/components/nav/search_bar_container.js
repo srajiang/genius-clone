@@ -5,7 +5,7 @@ import { search } from '../../actions/search_actions';
 const mSTP = (state) => ({
 
   songs: state.entities.search_results,
-  searchBarActive: state.ui
+  searchBarActive: state.ui.searchState
 
 })
 

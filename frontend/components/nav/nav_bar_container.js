@@ -4,8 +4,10 @@ import { logoutUser } from '../../actions/session_actions'
 
 
 const mapStateToProps = state => ({
-  
-  currentUserId: state.session.currentUserId
+
+  currentUserId: state.session.currentUserId,
+  users: state.entities.users,
+  sessionMenuActive: state.ui.sessionMenuState
 
 })
 

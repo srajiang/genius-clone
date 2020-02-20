@@ -108,13 +108,69 @@
 .right-nav {
 
   position: relative;
-  padding-right: 15px;
+
+  display: flex;
+
+  align-items: center;
+  padding-right: 1rem;
   font-size: 13px;
   letter-spacing: 0.08em;
   transform: all .3s ease;
+
+  height: 100%;
+}
+
+.sign-option {
+  padding-left: 1rem;  
+}
+
+.user-profile {
+  cursor: pointer;
+}
+
+.user-profile-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.user-profile-name > svg {
+
+  margin-right: 1rem;
+
+}
+
+.user-profile-menu {
+
+  position: absolute;
+  background: white;
+  top: 3.4rem;
+
+  width: 200px;
+  left: -5.5rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
+
   cursor: pointer;
 
 }
+
+.user-profile-header, .user-profile-logout, .user-profile-view {
+  padding: .6rem;
+}
+
+.user-profile-logout:hover, .user-profile-view:hover {
+  background-color: #e9e9e9;
+}
+
+
+.user-profile-header {
+
+  border-bottom: 1px solid #e9e9e9;
+  cursor: auto;
+}
+
+
 
 .left-nav input:active, input:focus {
   outline: none;
@@ -123,12 +179,6 @@
 .right-nav a:visited {
 
   color:black;
-
-}
-
-.right-nav:hover {
-
-  transform: scale(1.05);
 
 }
 

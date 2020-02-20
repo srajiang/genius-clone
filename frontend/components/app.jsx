@@ -9,14 +9,20 @@ import NavBarSub from './nav/nav_bar_sub';
 import Footer from './footer';
 import ChartIndexContainer from './chart/chart_index_container';
 import SongPageContainer from './song_page/song_page_container';
+import ProfileContainer from './session/profile_container';
 import ErrorPage from './error_page';
 
-import { updateSearchBarState } from "../actions/ui_actions";
+import {
+  updateSearchBarState,
+  updateSessionMenuState
+} from "../actions/ui_actions";
 
 
 export default () => {
 
   const handleClick = (e) => {
+
+    console.log(e.target.className);
 
     if (
       typeof e.target.className === "string" &&
@@ -25,9 +31,10 @@ export default () => {
         e.target.className.includes("chart") ||
         e.target.className.includes("nav") ||
         e.target.className.includes('item')
-      )
+      ) 
     ) {
       dispatch(updateSearchBarState(false));
+      dispatch(updateSessionMenuState(false));
     }
   }
 
@@ -39,9 +46,11 @@ export default () => {
         <Route path="/" component={NavBarSub}></Route>
         
         <Switch>
+
           <Route path="/songs/:songId" component={SongPageContainer}></Route>
           <AuthRoute path="/signin" component={SigninContainer}></AuthRoute>
-          <AuthRoute path="/signup" component={SignupContainer}></AuthRoute>        
+          <AuthRoute path="/signup" component={SignupContainer}></AuthRoute>
+          <Route path="/profile" component={ProfileContainer}></Route>        
           <Route exact path="/" component={ChartIndexContainer}></Route>
           
           <Route exact path="/:anything_else" component={ErrorPage}></Route>
@@ -49,7 +58,6 @@ export default () => {
         </Switch>
 
       </section>
-      <div className="push"></div>
 
       <Route path="/" component={Footer}></Route>
 

@@ -1,18 +1,11 @@
-import {
-  UPDATE_SEARCH_STATE
-} from '../actions/ui_actions';
+import { combineReducers } from "redux";
 
-const UIReducer = (state = false, action) => {
+import SearchStateReducer from './search_state_reducer';
+import SessionMenuStateReducer from './session_drop_down_reducer';
 
-  switch(action.type) {
-
-    case UPDATE_SEARCH_STATE:
-      return action.isActive;
-    default:
-      return state;
-
-  }
-
-}
+const UIReducer = combineReducers({
+  searchState: SearchStateReducer,
+  sessionMenuState: SessionMenuStateReducer
+});
 
 export default UIReducer;
