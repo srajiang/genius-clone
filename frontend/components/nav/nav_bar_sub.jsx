@@ -11,7 +11,6 @@ const NavBarSub = () => {
       <div className='nav-bar-sub'>
         <div><NavLink activeClassName="active" to="/">FEATURED</NavLink></div>
         <div><NavLink activeClassName="active" to="/">CHARTS</NavLink></div>
-        <div><NavLink activeClassName="active" to="/">ADD A SONG</NavLink></div>
 
         <div className="nav-bar-sub-icons">
 
