@@ -94,3 +94,11 @@ body {
     color: none;
     background: none;
 }
+
+a:not([class]) {
+  color:black
+}
+
+a:not([class]):visited {
+  color:black;
+}
