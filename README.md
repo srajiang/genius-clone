@@ -40,6 +40,20 @@ Users can also submit an annotation for a song, update any existing annotations 
 
 # Simplifications to UI / UX
 
+## Redesign of annotation look / feel
+
+* The lyric to which the annotation refers is on the card itself, creating greater relationship between the line and the interpretation. 
+* I Redesigned the look of the annotation to have a "weightier feel" with drop shadow. This increased the distinction visually between a lyric and it's associated annotation and aids the user's eye in getting to relevant information. 
+* I lightened some of the heavier elements on the annotation to better direct visual attention to the annotation itself. 
+* Actions are present, but less visually clunky.
+* Color is used to highlight possible actions the user can take, as well as contributers to the annotation.
+
+<p
+<img width="250" alt="Screen Shot 2020-02-21 at 10 22 52 AM" src="https://user-images.githubusercontent.com/55667998/75061030-bd893400-5494-11ea-8fe0-274a4b96a828.png">
+<img width="450" alt="Screen Shot 2020-02-21 at 10 25 45 AM" src="https://user-images.githubusercontent.com/55667998/75061014-b6fabc80-5494-11ea-8b54-59ebcee4787d.png">
+</p>
+
+
 ## Reducing steps to complete action => fewer clicks, less requests to the backend
 * The original Genius.com app featured a 4 step process to creating an annotation:
 
