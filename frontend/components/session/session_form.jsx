@@ -31,7 +31,12 @@ class SessionForm extends React.Component {
     let user = this.state;
     delete user.email_or_user;
     
-    this.props.action(user).then(() => this.closeModal());
+    this.props.action(user).then(() => {
+      
+      this.dismissModal();
+      return <Redirect exact to="/"></Redirect>
+    }
+    );
 
   }
 
@@ -174,10 +179,6 @@ class SessionForm extends React.Component {
       }
     }, intervalSpeed);
 
-  }
-
-  closeModal() {
-    <Redirect exact to="/"></Redirect>
   }
 
   dismissModal(e) {

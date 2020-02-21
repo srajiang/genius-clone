@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
     }
     this.searchDebounced = AwesomeDebouncePromise(
       () => this.props.search(this.state.input),
-      100
+      500
     );
     this.updateInput = this.updateInput.bind(this);
     this.renderSongsByLyric = this.renderSongsByLyric.bind(this);
