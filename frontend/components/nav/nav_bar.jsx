@@ -38,7 +38,7 @@ class NavBar extends React.Component {
             {/* account */}
             
             <div className="user-profile-view">
-              <Link to="/">View Profile</Link>
+              <Link to="/profile">View Profile</Link>
             </div>
 
             {/* logout */}

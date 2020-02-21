@@ -20,13 +20,14 @@ class SearchBar extends React.Component {
     }
     this.searchDebounced = AwesomeDebouncePromise(
       () => this.props.search(this.state.input),
-      500
+      100
     );
     this.updateInput = this.updateInput.bind(this);
-    
+    this.renderSongsByLyric = this.renderSongsByLyric.bind(this);
+    this.renderSongsByTitle = this.renderSongsByTitle.bind(this); 
   }
 
-  renderSearchItemsOrNull(songs) {
+  renderSearchItemsOrNull(songs, byLyric, byArtist) {
 
     if (this.state.loading) return (
       <div id="search-bar-loader">
@@ -39,38 +40,63 @@ class SearchBar extends React.Component {
       </div>
     );
 
-    if (!songs || songs.length === 0) return <p id="search-null">No results found by that title</p>;
+
+    if (!songs || songs.length === 0) return <p id="search-null">No results</p>;
+
 
     return ( 
       songs.map((song, idx) => {
-        if (idx < 9) return < SearchBarItem song={song} key={idx} />
+        if (idx < 4) return < SearchBarItem input={this.state.input} displayArtist={byArtist} displayLyric={byLyric} song={song} key={idx} />
       })  
     )
 
+  }
+
+  renderSongsByTitle() {
+    let songsByTitle;
+    if (this.props.songs.songsByTitle) {
+      songsByTitle = Object.values(this.props.songs.songsByTitle);
+    }
+
+    return (
+      <>
+        <p className="search-bar-header-sub">SONGS</p>
+        <ul className="search-bar-index">
+          {this.renderSearchItemsOrNull(songsByTitle, false)}
+        </ul>
+      </>
+    )
+
+  }
+
+  renderSongsByLyric() {
+
+    let songsByLyric;
+    if (this.props.songs.songsByLyric) {
+      songsByLyric = Object.values(this.props.songs.songsByLyric);
+    }
+
+    return(
+      <>
+        <p className="search-bar-header-sub">LYRIC MATCHES</p>
+        <ul className="search-bar-index">
+          {this.renderSearchItemsOrNull(songsByLyric, true)}
+        </ul>
+      </>
+    )
   }
 
   renderSearchOptions() {
 
     if (this.props.searchBarActive === false) return null;
 
-    let songs;
-    if (this.props.songs.songsByTitle) {
-      songs = Object.values(this.props.songs.songsByTitle);
-    }
-
     return (
-
       <div className="search-bar-dropdown">
-        <p className="search-bar-header">Search Results</p>
-        <ul className="search-bar-index">
-
-          {
-            this.renderSearchItemsOrNull(songs)
-          }
-        </ul>
+        <p className="search-bar-header">SEARCH RESULTS</p>
+        {this.renderSongsByTitle()}
+        { this.state.input && this.renderSongsByLyric()}
       </div>
-
-    )
+    );
   }
 
   submit(e) {
