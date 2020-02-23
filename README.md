@@ -27,7 +27,8 @@ Specifications:
 Users of the site can sign up for accounts and log into existing accounts via an authentication system encrypted with the BCrypt hashing and salting. Users who have not signed in with an account are prompted to sign in or login before they can contribute to annotations. 
 
 ### Search by Song Title and by Lyric
-Users can search the app by song title (e.g. Dancing on My Own) or by lyric (e.g. "I'm giving it my own..). This is accomplished by having a stateful React component whose onChange event handler sends out a request to the API backend of the application with the users' input. In order to improve app efficiency and reduce thrash, I debounced the requests, so that the Axios request only sends out after the user has paused typing for a specific set of time. The Rails controllers and JBuilder receive and formulate the response to client, which is rendered on the 
+Users can search the app by song title (e.g. Dancing on My Own) or by lyric (e.g. "I'm giving it my own..). This is accomplished by having a stateful React component whose onChange event handler sends out a request to the API backend of the application with the users' input. In order to improve app efficiency and reduce thrash, I debounced the requests, so that the Axios request only sends out after the user has paused typing for a specific set of time. The Rails controllers and JBuilder receive and formulate the response to client. 
+
 
 ### Top Song Chart View with Filtering Based on Song Genre + # of Songs to Display
 Users can view a listing of songs with artist information and album images. The chart view also features a filtering menu drop down which fetches results from the Rails backend routes based on the selected song genre and filters results by amount. 
