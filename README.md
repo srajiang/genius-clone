@@ -1,6 +1,6 @@
 # Snillingur "Nordic Genius"
 
-# [Live](https://snillingur.herokuapp.com/#/)
+## [Try out Nordic Genius!](https://snillingur.herokuapp.com/#/)
 
 Snillingur "Nordic Genius" is a pixel-perfect tribute to a personal favorite site of mine, Genius.com featuring exclusively Nordic artists.
 
