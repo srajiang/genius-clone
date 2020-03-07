@@ -10,10 +10,10 @@ I created this app using:
 
 * Ruby on Rails for backend routes and REST-ful API endpoints
 * PostgreSQL database, ActiveRecord and Active Storage / AWS S3 cloud storage for media and asset hosting
-* JBuilder formatting framework AJAX calls
+* JBuilder formatting framework, AJAX calls
 * React.js frontend components with full Redux cycles
 * SCSS / Sass for styling
-* A Full user authentication flow for users via BCrypt Hashing and salting and protected routes
+* Full user authentication flow for users via BCrypt Hashing and salting and protected routes
 
 Specifications:
 * Ruby version
