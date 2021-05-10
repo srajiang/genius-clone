@@ -54,6 +54,6 @@
   },
   "homepage": "https://github.com/srajiang/snillingur#readme",
   "devDependencies": {
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.21"
   }
 }
